@@ -22,24 +22,20 @@ public class Orario {
     }
     
     //Metodi
-    public void setOra(int ora){
-        this.ora=ora;
-    }
-    
-    public void setMinuto(int minuto){
-        this.minuto=minuto;
-    }
-    
     public int getOra(){
         return ora;
+    }
+    
+    public void setOra(int ora){
+        this.ora=ora;
     }
     
     public int getMinuto(){
         return minuto;
     }
     
-    public String toString(){
-        return "Lo spettacolo inizia alle: "+ora+":"+minuto;
+    public void setMinuto(int minuto){
+        this.minuto=minuto;
     }
     
 }
