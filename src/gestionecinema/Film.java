@@ -22,11 +22,15 @@ public class Film {
     private String trama;
     
     //Costruttori
-    public Film(String titolo,String genere,String trama,String regista){
-        this.titolo=titolo;
-        this.genere=genere;
-        this.trama=trama;
-        this.regista=regista;
+    public Film(String titolo, String genere, String regista, int durata, int anno, String nazione, String distribuzione, String trama) {
+        this.titolo = titolo;
+        this.genere = genere;
+        this.regista = regista;
+        this.durata = durata;
+        this.anno = anno;
+        this.nazione = nazione;
+        this.distribuzione = distribuzione;
+        this.trama = trama;
     }
     
     //Metodi

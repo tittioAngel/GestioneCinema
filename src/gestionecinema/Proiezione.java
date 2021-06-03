@@ -13,14 +13,12 @@ public class Proiezione {
     
     //Attributi
     private Film film_p;
-    private Data data_p;
     private Orario orario_p;
     private Sala sala_p;
     
     //Costruttore
-    public Proiezione(Film film_p, Data data_p, Orario orario_p, Sala sala_p){
+    public Proiezione(Film film_p, Orario orario_p, Sala sala_p){
         this.film_p=film_p;
-        this.data_p=data_p;
         this.orario_p=orario_p;
         this.sala_p=sala_p;
     }
@@ -33,14 +31,6 @@ public class Proiezione {
 
     public void setFilm_p(Film film_p) {
         this.film_p = film_p;
-    }
-
-    public Data getData_p() {
-        return data_p;
-    }
-
-    public void setData_p(Data data_p) {
-        this.data_p = data_p;
     }
 
     public Orario getOrario_p() {

@@ -5,10 +5,21 @@
  */
 package gestionecinema;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author matte
  */
 public class Catalogo {
+    
+    //Attributi
+    private ArrayList<Proiezione> catalogo_consultabile;
+    
+    //Costruttori
+    public Catalogo(ArrayList<Proiezione> catalogo_consultabile) {
+        this.catalogo_consultabile = catalogo_consultabile;
+    }
+    
     
 }
