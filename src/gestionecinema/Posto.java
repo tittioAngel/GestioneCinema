@@ -4,7 +4,7 @@ package gestionecinema;
 
 public class Posto {
     private int sedile;
-    private File fila;
+    private Fila fila;
     private boolean occupato=false;
 
     public boolean isOccupato() {
@@ -15,7 +15,7 @@ public class Posto {
         this.occupato = occupato;
     }
     
-    Posto(int sedile,File fila){
+    Posto(int sedile,Fila fila){
         this.sedile=sedile;
         this.fila=fila;
     }
@@ -28,11 +28,11 @@ public class Posto {
         this.sedile = sedile;
     }
 
-    public File getFila() {
+    public Fila getFila() {
         return fila;
     }
 
-    public void setFila(File fila) {
+    public void setFila(Fila fila) {
         this.fila = fila;
     }
 

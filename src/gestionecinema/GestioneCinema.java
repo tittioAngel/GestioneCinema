@@ -5,6 +5,8 @@
  */
 package gestionecinema;
 
+import java.io.FileNotFoundException;
+
 /**
  *
  * @author matte
@@ -14,8 +16,10 @@ public class GestioneCinema {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-      System.out.print("Hello World");
+    public static void main(String[] args) throws FileNotFoundException {
+        Catalogo c = new Catalogo();
+        c.riempiCatalogo();
+        
     }
     
 }

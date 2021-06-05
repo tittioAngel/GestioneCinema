@@ -16,7 +16,10 @@ public class Proiezione {
     private Orario orario_p;
     private Sala sala_p;
     
-    //Costruttore
+    //Costruttori
+    public Proiezione() {
+    }
+    
     public Proiezione(Film film_p, Orario orario_p, Sala sala_p){
         this.film_p=film_p;
         this.orario_p=orario_p;
@@ -47,6 +50,11 @@ public class Proiezione {
 
     public void setSala_p(Sala sala_p) {
         this.sala_p = sala_p;
+    }
+
+    @Override
+    public String toString() {
+        return "Proiezione{" + "film_p=" + film_p + ", orario_p=" + orario_p + ", sala_p=" + sala_p + '}';
     }
     
     

@@ -97,5 +97,11 @@ public class Film {
     public void setDistribuzione(String distribuzione) {
         this.distribuzione = distribuzione;
     }
+
+    @Override
+    public String toString() {
+        return "Film{" + "titolo=" + titolo + ", genere=" + genere + ", regista=" + regista + ", durata=" + durata + ", anno=" + anno + ", nazione=" + nazione + ", distribuzione=" + distribuzione + ", trama=" + trama + '}';
+    }
+    
     
 }
