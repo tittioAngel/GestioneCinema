@@ -13,8 +13,8 @@ public class Proiezione {
     
     //Attributi
     private Film film_p;
-    private Orario orario_p;
     private Sala sala_p;
+    private Orario orario_p;
     
     //Costruttori
     public Proiezione() {
@@ -54,7 +54,7 @@ public class Proiezione {
 
     @Override
     public String toString() {
-        return "Proiezione{" + "film_p=" + film_p + ", orario_p=" + orario_p + ", sala_p=" + sala_p + '}';
+        return "Proiezione{" + "film_p=" + film_p + ", sala_p=" + sala_p + ", orario_p=" + orario_p + '}';
     }
     
     

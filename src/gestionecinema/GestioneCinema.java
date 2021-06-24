@@ -19,7 +19,6 @@ public class GestioneCinema {
     public static void main(String[] args) throws FileNotFoundException {
         Catalogo c = new Catalogo();
         c.riempiCatalogo();
-        
     }
     
 }

@@ -18,6 +18,11 @@ public class Sala {
         this.gf=nposti/nf; // vediamo quanti posti ci sono in una fila
         posto=new Posto[nf][gf];
     }
+    
+    public Sala(int numero){
+        this.numero = numero;
+    }
+    
     public void AggiornaPosti(){ //aggiorniamo il numero di posti liberi 
         nLiberi--;
     }
@@ -60,6 +65,13 @@ public class Sala {
     public int getnLiberi() {
         return nLiberi;
     }
+
+    @Override
+    public String toString() {
+        return "Sala{" + "numero=" + numero + '}';
+    }
+
+    
     
     
 }

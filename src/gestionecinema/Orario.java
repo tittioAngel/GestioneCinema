@@ -37,5 +37,10 @@ public class Orario {
     public void setMinuto(int minuto){
         this.minuto=minuto;
     }
+
+    @Override
+    public String toString() {
+        return "Orario{" + "ora=" + ora + ", minuto=" + minuto + '}';
+    }
     
 }
