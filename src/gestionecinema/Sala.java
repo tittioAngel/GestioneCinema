@@ -26,10 +26,14 @@ public class Sala {
     public void AggiornaPosti(){ //aggiorniamo il numero di posti liberi 
         nLiberi--;
     }
+    
+    
     public boolean Pieno(){
         if (nLiberi!=0) return false; //se la sala non è piena torna falsa 
         else return true; // se la sala è piena torna true 
     }
+    
+    
      public void PostoOccupato(Posto posto){
          for(int i =0;i<nf;i++){ //cerchiamo il posto chiesto
              for(int j=0;j<gf;j++){
