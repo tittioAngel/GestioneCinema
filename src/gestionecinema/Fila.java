@@ -12,5 +12,15 @@ public enum Fila {
     G,
     H,
     I,
-    J
+    J;
+    public Fila getNext(){
+        Fila[] f= Fila.values();
+        int i =0;
+        for(;f[i]!=this;i++)
+            ;
+        i++;
+        i%=f.length;
+        return f[i];
+    }
+    
 }

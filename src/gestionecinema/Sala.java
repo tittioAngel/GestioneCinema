@@ -41,7 +41,18 @@ public class Sala {
              }
          }
      }
-
+     
+     
+    public int LiberiFila(Fila f){
+        int n=0;
+        for(int i =0;i<gf;i++){
+            if(!posto[f.ordinal()][i].isOccupato())
+                n++;
+        }
+        return n;
+    }
+    
+    
     public int getNf() {
         return nf;
     }
