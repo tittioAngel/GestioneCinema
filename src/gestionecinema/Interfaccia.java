@@ -93,6 +93,11 @@ public class Interfaccia extends javax.swing.JFrame {
         jTextField1.setEnabled(false);
 
         ora.setEnabled(false);
+        ora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                oraActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -166,21 +171,15 @@ public class Interfaccia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void listaTitoliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaTitoliMouseClicked
-        
-        //ora.addItem("18:00");
         ora.removeAllItems();
-        System.out.println(c.selezionaOrarioFilm(s).size());
+        System.out.println(c.visualizzaOrariFilm(s).size());
         ora.setEnabled(true);
         qtaCombo.setEnabled(true);
         
         s = listaTitoli.getSelectedValue();
-        for(int j=0; j<c.selezionaOrarioFilm(s).size(); j++){
-            ora.addItem(c.selezionaOrarioFilm(s).get(j).toString());
+        for(int j=0; j<c.visualizzaOrariFilm(s).size(); j++){
+            ora.addItem(c.visualizzaOrariFilm(s).get(j).toString());
         }
-        
-        //System.out.println(listaTitoli.getSelectedValue());
-        //listaTitoli.
-        
     }//GEN-LAST:event_listaTitoliMouseClicked
 
     private void stampaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stampaActionPerformed
@@ -194,6 +193,17 @@ public class Interfaccia extends javax.swing.JFrame {
     private void listaTitoliMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaTitoliMousePressed
 
     }//GEN-LAST:event_listaTitoliMousePressed
+
+    private void oraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oraActionPerformed
+        jTextField1.setVisible(true);
+        o = ora.getSelectedItem().toString();
+        String[] parti = o.split(":");
+        int ora= Integer.parseInt(parti[0]);
+        int minuto= Integer.parseInt(parti[1]);
+        Orario orario = new Orario(ora,minuto);
+        jTextField1.setText(c.visualizzaSalaFilm(s, orario)+"");
+        System.out.println(c.visualizzaSalaFilm(s, orario)+"");
+    }//GEN-LAST:event_oraActionPerformed
     
     /**
      * @param args the command line arguments
@@ -246,7 +256,7 @@ public class Interfaccia extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> qtaCombo;
     private javax.swing.JButton stampa;
     // End of variables declaration//GEN-END:variables
-    private String s;
+    private String s,o;
     private Catalogo c = new Catalogo();
 
     public String getS() {
