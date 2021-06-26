@@ -40,7 +40,10 @@ public class Orario {
 
     @Override
     public String toString() {
-        return ora + ":" + minuto;
+        String min="";
+        if(minuto==0)  min="00";
+        else    min=""+minuto;
+        return ora + ":" + min;
     }
     
 }
