@@ -5,7 +5,10 @@
  */
 package gestionecinema;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -106,8 +109,8 @@ public class Interfaccia extends javax.swing.JFrame {
                             .add(18, 18, 18)
                             .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                 .add(qtaCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .add(ora, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                                .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .add(ora, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 75, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
                     .add(n_salaLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 48, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(49, 49, Short.MAX_VALUE))
         );
@@ -159,13 +162,24 @@ public class Interfaccia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void listaTitoliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaTitoliMouseClicked
-        ora.addItem("18:00");
+        
+        //ora.addItem("18:00");
+        ora.removeAllItems();
         ora.setEnabled(true);
         qtaCombo.setEnabled(true);
+        try {
+            c.riempiCatalogo();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
+        }
         s = listaTitoli.getSelectedValue();
+        for(int j=0; j<c.selezionaOrarioFilm(s).size(); j++){
+            ora.addItem(c.selezionaOrarioFilm(s).get(j).toString());
+        }
+        
         //System.out.println(listaTitoli.getSelectedValue());
         //listaTitoli.
-        return ;
+        
     }//GEN-LAST:event_listaTitoliMouseClicked
 
     private void stampaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stampaActionPerformed
@@ -179,7 +193,7 @@ public class Interfaccia extends javax.swing.JFrame {
     private void listaTitoliMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaTitoliMousePressed
 
     }//GEN-LAST:event_listaTitoliMousePressed
-
+    
     /**
      * @param args the command line arguments
      */
@@ -232,6 +246,7 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JButton stampa;
     // End of variables declaration//GEN-END:variables
     private String s;
+    private Catalogo c = new Catalogo();
 
     public String getS() {
         return s;
