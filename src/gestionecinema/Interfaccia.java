@@ -165,6 +165,7 @@ public class Interfaccia extends javax.swing.JFrame {
         
         //ora.addItem("18:00");
         ora.removeAllItems();
+        System.out.println(c.selezionaOrarioFilm(s).size());
         ora.setEnabled(true);
         qtaCombo.setEnabled(true);
         try {
