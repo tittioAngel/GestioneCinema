@@ -77,17 +77,15 @@ public class Catalogo {
      * @return lista delle sale per quel determinato film
      */
     
-    public ArrayList selezionaSalaFilm(String titolo_Film){
-        ArrayList<Integer> saleFilm = new ArrayList<Integer>();
+    public int visualizzaSalaFilm(String titolo_Film, Orario orario_Film){
+        int salaFilm = 0;
         for(Proiezione p:catalogo_consultabile){
-            if(p.getFilm_p().getTitolo().equals(titolo_Film)){
-                if(!(saleFilm.contains(p.getSala_p().getNumero()))){
-                    saleFilm.add(p.getSala_p().getNumero());
-                }   
+            if(p.getFilm_p().getTitolo().equals(titolo_Film) && p.getOrario_p().getOra()==orario_Film.getOra() && orario_Film.getMinuto()==p.getOrario_p().getMinuto()){
+                salaFilm = p.getSala_p().getNumero();
             }
         }
         
-        return saleFilm;
+        return salaFilm;
     }
     
     /**
@@ -95,15 +93,15 @@ public class Catalogo {
      * @param titolo_Film
      * @return 
      */
-    public ArrayList selezionaOrarioFilm(String titolo_Film){
-        ArrayList<Orario> orarioFilm = new ArrayList<Orario>();
+    public ArrayList visualizzaOrariFilm(String titolo_Film){
+        ArrayList<Orario> orariFilm = new ArrayList<Orario>();
         for(Proiezione p:catalogo_consultabile){
             if(p.getFilm_p().getTitolo().equals(titolo_Film)){
-                orarioFilm.add(p.getOrario_p()); 
+                orariFilm.add(p.getOrario_p()); 
             }
         }
         
-        return orarioFilm;
+        return orariFilm;
     }
     
     
