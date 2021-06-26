@@ -40,7 +40,7 @@ public class Orario {
 
     @Override
     public String toString() {
-        return "Orario{" + "ora=" + ora + ", minuto=" + minuto + '}';
+        return ora + ":" + minuto;
     }
     
 }

@@ -37,11 +37,6 @@ public class GestioneCinema {
         else 
             System.out.println("no");
 
-        //in base alla scelta inserisco gli orari relativi al film
-     
-        
- 
-
         //in base agli orari al numero di biglietti mi stampa i biglietti 
         int n=i.qtaCombo.getSelectedIndex()+1;
         
