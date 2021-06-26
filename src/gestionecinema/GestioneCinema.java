@@ -20,13 +20,35 @@ public class GestioneCinema {
     public static void main(String[] args) throws FileNotFoundException {
        Catalogo c = new Catalogo();
         c.riempiCatalogo();
+        
         Interfaccia i=new Interfaccia();
-        i.setVisible(true);
+       
+       
+        //inserisco i nomi dei film nella lista 
         String []s=new String[c.listaTitoliFilm().size()];
         for (int j=0;j<c.listaTitoliFilm().size();j++){
             s[j]=(String) (c.listaTitoliFilm().get(j));
         } 
+        
         i.listaTitoli.setListData(s);
+        i.listaTitoli.getLastVisibleIndex();
+        if(!i.listaTitoli.isSelectionEmpty())
+            System.out.println(i.listaTitoli.getSelectedValue());
+        else 
+            System.out.println("no");
+
+        //in base alla scelta inserisco gli orari relativi al film
+     
+        
+ 
+
+        //in base agli orari al numero di biglietti mi stampa i biglietti 
+        int n=i.qtaCombo.getSelectedIndex()+1;
+        
+        i.setVisible(true);
+        
+        
+       
     }
     
 }

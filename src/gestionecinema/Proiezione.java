@@ -51,6 +51,7 @@ public class Proiezione {
     public void setSala_p(Sala sala_p) {
         this.sala_p = sala_p;
     }
+    
 
     @Override
     public String toString() {

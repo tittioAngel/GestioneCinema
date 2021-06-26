@@ -106,6 +106,13 @@ public class Catalogo {
         return orarioFilm;
     }
     
+    
+    /*public Proiezione proiezioneScelta(String titolo,String ora){
+        for(int i=0;i<catalogo_consultabile.size();i++){
+            if(catalogo_consultabile.get(i).getFilm_p().getTitolo()==titolo && catalogo_consultabile.get(i).getOrario_p().equals(ora))
+                return catalogo_consultabile.get(i);
+        }
+    }*/
     public void VisualizzaCatalogo(){
         for(Proiezione p: catalogo_consultabile){
             System.out.println(p);
