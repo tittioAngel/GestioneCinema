@@ -21,7 +21,11 @@ public class Interfaccia extends javax.swing.JFrame {
      */
     public Interfaccia() {
         initComponents();
-
+        try {
+            c.riempiCatalogo();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -168,11 +172,7 @@ public class Interfaccia extends javax.swing.JFrame {
         System.out.println(c.selezionaOrarioFilm(s).size());
         ora.setEnabled(true);
         qtaCombo.setEnabled(true);
-        try {
-            c.riempiCatalogo();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
         s = listaTitoli.getSelectedValue();
         for(int j=0; j<c.selezionaOrarioFilm(s).size(); j++){
             ora.addItem(c.selezionaOrarioFilm(s).get(j).toString());
