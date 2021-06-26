@@ -6,6 +6,7 @@
 package gestionecinema;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +27,7 @@ public class Interfaccia extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }
 
     /**
@@ -61,6 +63,11 @@ public class Interfaccia extends javax.swing.JFrame {
         qtaCombo.setSelectedItem(qtaCombo);
         qtaCombo.setToolTipText("");
         qtaCombo.setEnabled(false);
+        qtaCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                qtaComboActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("QTA DI BIGLIETTI");
 
@@ -73,17 +80,9 @@ public class Interfaccia extends javax.swing.JFrame {
 
         n_salaLabel.setText("N. SALA");
 
-        listaTitoli.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
-            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
-                listaTitoliMouseWheelMoved(evt);
-            }
-        });
         listaTitoli.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 listaTitoliMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                listaTitoliMousePressed(evt);
             }
         });
         jScrollPane1.setViewportView(listaTitoli);
@@ -183,17 +182,29 @@ public class Interfaccia extends javax.swing.JFrame {
     }//GEN-LAST:event_listaTitoliMouseClicked
 
     private void stampaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stampaActionPerformed
+        
+            /*o = ora.getSelectedItem().toString();
+            String[] parti = o.split(":");
+            int oo= Integer.parseInt(parti[0]);
+            int mm= Integer.parseInt(parti[1]);
+            Orario orario = new Orario(oo,mm);
+            //Sala sala=c.visualizzaSalaFilm(s, orario);
+            //b.setScelta(c.proiezioneScelta(s,orario,c.visualizzaSalaFilm(s, orario)));
+            //b.setNb(n);*/
+            stampaBiglietti();
 
+  
     }//GEN-LAST:event_stampaActionPerformed
-
-    private void listaTitoliMouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_listaTitoliMouseWheelMoved
-        // TODO add your handling code here:
-    }//GEN-LAST:event_listaTitoliMouseWheelMoved
-
-    private void listaTitoliMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaTitoliMousePressed
-
-    }//GEN-LAST:event_listaTitoliMousePressed
-
+    
+    private void stampaBiglietti(){
+        try {
+            b.trovaPosto(p);
+        } catch (IOException ex) {
+            Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+    }
+    
     private void oraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oraActionPerformed
         jTextField1.setVisible(true);
         o = ora.getSelectedItem().toString();
@@ -202,8 +213,13 @@ public class Interfaccia extends javax.swing.JFrame {
         int minuto= Integer.parseInt(parti[1]);
         Orario orario = new Orario(ora,minuto);
         jTextField1.setText(c.visualizzaSalaFilm(s, orario)+"");
-        System.out.println(c.visualizzaSalaFilm(s, orario)+"");
+        b.setScelta(c.proiezioneScelta(s,orario,c.visualizzaSalaFilm(s, orario)));
     }//GEN-LAST:event_oraActionPerformed
+
+    private void qtaComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qtaComboActionPerformed
+        //n=qtaCombo.getSelectedIndex()+1;
+        b.setNb(qtaCombo.getSelectedIndex()+1);
+    }//GEN-LAST:event_qtaComboActionPerformed
     
     /**
      * @param args the command line arguments
@@ -258,8 +274,10 @@ public class Interfaccia extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private String s,o;
     private Catalogo c = new Catalogo();
-
     public String getS() {
         return s;
     }
+    Biglietto b=new Biglietto();
+    private int n;
+    private Posto p=new Posto(0,Fila.A);
 }

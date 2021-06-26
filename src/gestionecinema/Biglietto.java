@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 
 public class Biglietto {
-    private Proiezione scelta;
+    private Proiezione scelta=new Proiezione();
     private int nb;
     private Posto p=new Posto(0,Fila.A);
 
@@ -21,12 +21,16 @@ public class Biglietto {
         this.scelta = scelta;
         this.nb = nb;
     }
+    public Biglietto(){
+        
+    }
 
     public void trovaPosto(Posto p) throws IOException{
         boolean trovato=false;
 
         if(scelta.getSala_p().Pieno())
             JOptionPane.showMessageDialog(null,"LA SALA E' PIENA");
+        
         else{
             while(!trovato){
                 if(scelta.getSala_p().LiberiFila(p.getFila())>=nb){
@@ -44,7 +48,7 @@ public class Biglietto {
 
     }
 
-    public void stampaBiglietti(Posto p) throws IOException{
+    private void stampaBiglietti(Posto p) throws IOException{
          FileWriter b = new FileWriter("Biglietti.txt");
          for(int i=0;i<nb;i++){
             if(scelta.getSala_p().getPosto()[p.getFila().ordinal()][p.getSedile()].isOccupato())
@@ -57,4 +61,30 @@ public class Biglietto {
             }
          }
     }
+
+    public Proiezione getScelta() {
+        return scelta;
+    }
+
+    public void setScelta(Proiezione scelta) {
+        this.scelta = scelta;
+    }
+
+    public int getNb() {
+        return nb;
+    }
+
+    public void setNb(int nb) {
+        this.nb = nb;
+    }
+
+    public Posto getP() {
+        return p;
+    }
+
+    public void setP(Posto p) {
+        this.p = p;
+    }
+    
+    
 }

@@ -77,15 +77,20 @@ public class Catalogo {
      * @return lista delle sale per quel determinato film
      */
     
-    public int visualizzaSalaFilm(String titolo_Film, Orario orario_Film){
+    public Sala visualizzaSalaFilm(String titolo_Film, Orario orario_Film){
         int salaFilm = 0;
         for(Proiezione p:catalogo_consultabile){
             if(p.getFilm_p().getTitolo().equals(titolo_Film) && p.getOrario_p().getOra()==orario_Film.getOra() && orario_Film.getMinuto()==p.getOrario_p().getMinuto()){
                 salaFilm = p.getSala_p().getNumero();
             }
         }
-        
-        return salaFilm;
+ 
+        for(Proiezione p:catalogo_consultabile){
+            if(p.getSala_p().getNumero()==salaFilm)
+               return p.getSala_p();
+        }
+       
+        return null;
     }
     
     /**
@@ -105,12 +110,13 @@ public class Catalogo {
     }
     
     
-    /*public Proiezione proiezioneScelta(String titolo,String ora){
+    public Proiezione proiezioneScelta(String titolo,Orario ora,Sala s){
         for(int i=0;i<catalogo_consultabile.size();i++){
-            if(catalogo_consultabile.get(i).getFilm_p().getTitolo()==titolo && catalogo_consultabile.get(i).getOrario_p().equals(ora))
+            if(catalogo_consultabile.get(i).getFilm_p().getTitolo()==titolo && catalogo_consultabile.get(i).getOrario_p().equals(ora) && catalogo_consultabile.get(i).getSala_p().equals(s))
                 return catalogo_consultabile.get(i);
         }
-    }*/
+        return null;
+    }
     public void VisualizzaCatalogo(){
         for(Proiezione p: catalogo_consultabile){
             System.out.println(p);

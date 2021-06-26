@@ -83,7 +83,7 @@ public class Sala {
 
     @Override
     public String toString() {
-        return "Sala{" + "numero=" + numero + '}';
+        return numero+"";
     }
 
     

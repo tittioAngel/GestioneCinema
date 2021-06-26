@@ -32,13 +32,8 @@ public class GestioneCinema {
         
         i.listaTitoli.setListData(s);
         i.listaTitoli.getLastVisibleIndex();
-        if(!i.listaTitoli.isSelectionEmpty())
-            System.out.println(i.listaTitoli.getSelectedValue());
-        else 
-            System.out.println("no");
 
         //in base agli orari al numero di biglietti mi stampa i biglietti 
-        int n=i.qtaCombo.getSelectedIndex()+1;
         
         i.setVisible(true);
         
