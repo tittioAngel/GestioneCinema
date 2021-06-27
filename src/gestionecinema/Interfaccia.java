@@ -20,7 +20,7 @@ public class Interfaccia extends javax.swing.JFrame {
     /**
      * Creates new form Interfaccia
      */
-    public Interfaccia(Sala s1,Sala s2,Sala s3,Sala s4,Sala s5) {
+    public Interfaccia() {
         
         initComponents();
         try {
@@ -194,7 +194,7 @@ public class Interfaccia extends javax.swing.JFrame {
             //b.setScelta(c.proiezioneScelta(s,orario,c.visualizzaSalaFilm(s, orario)));
             //b.setNb(n);*/
         
-            b.trovaPosto(p,n);
+            b.stampaBiglietti(n);
         } catch (IOException ex) {
             Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -272,7 +272,7 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JButton stampa;
     // End of variables declaration//GEN-END:variables
     private String s,o;
-    private Catalogo c = new Catalogo(s1,s2,s3,s4,s5);
+    private Catalogo c = new Catalogo();
     public String getS() {
         return s;
     }

@@ -1,0 +1,24 @@
+Biglietto numero: 1
+Film: Cruella  Orario: 15:30
+Sala: 1 Posto: Fila: A    Posto: 1
+
+Biglietto numero: 2
+Film: Cruella  Orario: 15:30
+Sala: 1 Posto: Fila: A    Posto: 2
+
+Biglietto numero: 3
+Film: Cruella  Orario: 15:30
+Sala: 1 Posto: Fila: A    Posto: 3
+
+Biglietto numero: 4
+Film: Cruella  Orario: 15:30
+Sala: 1 Posto: Fila: A    Posto: 4
+
+Biglietto numero: 5
+Film: Cruella  Orario: 15:30
+Sala: 1 Posto: Fila: A    Posto: 5
+
+Biglietto numero: 6
+Film: Cruella  Orario: 15:30
+Sala: 1 Posto: Fila: A    Posto: 6
+

@@ -22,15 +22,19 @@ public class GestioneCinema {
         Catalogo c = new Catalogo();
         c.riempiCatalogo();
         
-        Proiezione p= new Proiezione();
+        Proiezione p;
         p=c.getCatalogo_consultabile().get(0);
         Biglietto b=new Biglietto(p);
-        Posto s=new Posto(0,0);
-        //System.out.println(c.proiezioneScelta(p.getFilm_p().getTitolo(),p.getOrario_p(),p.getSala_p().getNumero()));
-        //System.out.println(p.getSala_p().getNposti()+"    "+p.getSala_p().getNf()+"  "+p.getSala_p().getGf());
-        //p.getSala_p().getMatrice();
-        b.trovaPosto(s,2);
-        System.out.println(p.getSala_p().liberiFila(0));
+        System.out.println("stampa 1");
+        b.stampaBiglietti(6); 
+//        System.out.println("stampa 2");
+//        b.stampaBiglietti(5);
+//        System.out.println("stampa 3");
+//        b.stampaBiglietti(2);
+//        System.out.println(p.getSala_p().getnLiberi());
+        //System.out.println(p.getSala_p().liberiFila(0));
+       
+        
 //        System.out.println("Seconda richiesta \n");
 //        b.trovaPosto(s,5);
 //        System.out.println("Terza richiesta\n");

@@ -14,52 +14,36 @@ import javax.swing.JOptionPane;
 
 public class Biglietto {
     private Proiezione scelta=new Proiezione();
-    
     private Posto p=new Posto(0,0);
-
+    
+    //costruttori
     public Biglietto(Proiezione scelta) {
         this.scelta = scelta;
         
     }
     public Biglietto(){
-        
     }
-
-    public void trovaPosto(Posto p,int nb) throws IOException{
-        boolean trovato=false;
-        int f=p.getFila();
-       // int postiliberiFila=scelta.getSala_p().liberiFila(p.getFila());
-        if(scelta.getSala_p().pieno())
-            JOptionPane.showMessageDialog(null,"LA SALA E' PIENA");
-        else{
-            while(trovato==false){
-                if(scelta.getSala_p().liberiFila(p.getFila())<=nb){
-                    trovato=true;
-                    stampaBiglietti(p,nb);
-                }else{
-                    p.setFila(f+1);
-                    p.setSedile(0);
-                    trovaPosto(p,nb);
+    //metodi
+    
+    //Stampa i biglietti richiesti
+    public void stampaBiglietti(int nb) throws IOException{
+        FileWriter f=new FileWriter("src\\gestionecinema\\biglietto.txt");
+        int n=0;//tiene conto dei biglietti stampati
+        for(int i=0;i<scelta.getSala_p().getNf();i++){ // scorriamo le file
+            if(scelta.getSala_p().liberiFila(i)>=nb){ //vediamo se nella fila ci sono abbastanza posti
+                for (int j=0;j<scelta.getSala_p().getGf();j++){ //scorriamo i sedili
+                    if(scelta.getSala_p().getPosti()[i][j].getOccupato()==false && n<nb){ //se il sedile è non occupato e non abbiamo ancora stampato tutti i biglietti
+                        f.write("Biglietto numero: "+(n+1)+"\n");//System.out.println(scelta.getFilm_p().getTitolo()+"  ora: "+scelta.getOrario_p().toString()+"\n"+scelta.getSala_p().getNumero()+" Posto: "+scelta.getSala_p().getPosti()[i][j]);
+                        f.write("Film: "+scelta.getFilm_p().getTitolo()+"  Orario: "+scelta.getOrario_p().toString()+"\nSala: "+scelta.getSala_p().getNumero()+" Posto: "+scelta.getSala_p().getPosti()[i][j]);
+                        f.write("\n\n");
+                        scelta.getSala_p().occupaPosto(scelta.getSala_p().getPosti()[i][j]); // rendiamo il posto occupato
+                        n++;// aggiorniamo i biglietti stampati
+                    }
+                }
             }
+                
         }
-        }
-
-    }
-
-    private void stampaBiglietti(Posto p,int nb) throws IOException{
-        int n=0;
-        FileWriter b = new FileWriter("Biglietti.txt");
-        for(int i=0;i<nb;i++){
-            if(scelta.getSala_p().getPosti()[p.getFila()][p.getSedile()].getOccupato()==false)
-            {
-                System.out.println("Film: "+scelta.getFilm_p().getTitolo()+"   Ora: "+scelta.getOrario_p()+"\nSala: "+scelta.getSala_p().getNumero()+"  Posto: "+p.toString());
-                b.write("Film: "+scelta.getFilm_p().getTitolo()+"   Ora: "+scelta.getOrario_p()+"\nSala: "+scelta.getSala_p().getNumero()+"  Posto: "+p.toString());
-                scelta.getSala_p().occupaPosto(p);
-                n=p.getSedile()+1;
-                p.setSedile(n);
-            }
-         }
-         
+        f.close();
     }
 
     public Proiezione getScelta() {

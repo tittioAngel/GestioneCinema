@@ -61,22 +61,31 @@ public class Sala {
         else return true; // se la sala è piena torna true 
     }
     
-    //rende un posto occupato
+    //rende un posto occupato 
     public void occupaPosto(Posto posto){ 
         posti[posto.getFila()][posto.getSedile()].setOccupato(true);// il posto viene reso occupato
-        nLiberi--;
+        nLiberi--; //aggiorniamo i posti occupati 
     }
          
     //ci conta i posti liberi in una fila
     public int liberiFila(int f){
         int n=0; //n è il numero di posti liberi
         for(int i=0;i<gf;i++){ //un for per i posti che sono in una fila
-            if(!posti[f][i].getOccupato()) // se il posto selezionato è occupato aggiorniamo n 
+            if(posti[f][i].getOccupato()==false) // se il posto selezionato è occupato aggiorniamo n 
                n++; 
         }
         return n;
     }
     
+    //ci stampa la matrice dei posti con numero e fila di posti 
+    public void getMatrice() {
+        for(int i=0;i<nf;i++){
+            for(int j=0;j<posti[i].length;j++){
+                System.out.print(posti[i][j].toString()+"  ");
+            }
+            System.out.println(" ");
+        }
+    }
     
     public int getNf() {
         return nf;
@@ -98,23 +107,11 @@ public class Sala {
         return posti;
     }
     
-    public void getMatrice() {
-        for(int i=0;i<nf;i++){
-            for(int j=0;j<posti[i].length;j++){
-                System.out.print(posti[i][j].toString()+"  ");
-            }
-            System.out.println(" ");
-        }
-    }
+   
 
     public int getnLiberi() {
         return nLiberi;
     }
-
-   /* @Override
-    public String toString() {
-        return numero+""+;
-    }*/
 
     @Override
     public String toString() {
