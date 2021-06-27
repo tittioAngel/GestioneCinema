@@ -105,10 +105,10 @@ public class Catalogo {
         return orariFilm;
     }
     
-    
+    //metodo
     public Proiezione proiezioneScelta(String titolo,Orario ora,int s){
         for(int i=0;i<catalogo_consultabile.size();i++){
-            if(catalogo_consultabile.get(i).getFilm_p().getTitolo()==titolo && catalogo_consultabile.get(i).getOrario_p().equals(ora) && catalogo_consultabile.get(i).getSala_p().getNumero()==s)
+            if(catalogo_consultabile.get(i).getFilm_p().getTitolo().equals(titolo)&& catalogo_consultabile.get(i).getOrario_p().getOra()==ora.getOra()&& catalogo_consultabile.get(i).getOrario_p().getMinuto()==ora.getMinuto()&& catalogo_consultabile.get(i).getSala_p().getNumero()==s)
                 return catalogo_consultabile.get(i);
         }
         return null;

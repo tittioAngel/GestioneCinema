@@ -61,6 +61,11 @@ public class Biglietto {
     public void setP(Posto p) {
         this.p = p;
     }
+
+    @Override
+    public String toString() {
+        return "Biglietto{" + "scelta=" + scelta + ", p=" + p + '}';
+    }
     
     
 }

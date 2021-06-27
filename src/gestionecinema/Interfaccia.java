@@ -185,20 +185,12 @@ public class Interfaccia extends javax.swing.JFrame {
     private void stampaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stampaActionPerformed
         
         try {
-            /*o = ora.getSelectedItem().toString();
-            String[] parti = o.split(":");
-            int oo= Integer.parseInt(parti[0]);
-            int mm= Integer.parseInt(parti[1]);
-            Orario orario = new Orario(oo,mm);
-            //Sala sala=c.visualizzaSalaFilm(s, orario);
-            //b.setScelta(c.proiezioneScelta(s,orario,c.visualizzaSalaFilm(s, orario)));
-            //b.setNb(n);*/
-        
             b.stampaBiglietti(n);
+            
         } catch (IOException ex) {
             Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
         }
-  
+        
     }//GEN-LAST:event_stampaActionPerformed
     
 
@@ -212,6 +204,7 @@ public class Interfaccia extends javax.swing.JFrame {
         Orario orario = new Orario(ora,minuto);
         jTextField1.setText(c.visualizzaSalaFilm(s, orario)+"");
         b.setScelta(c.proiezioneScelta(s,orario,c.visualizzaSalaFilm(s, orario)));
+        System.out.println(b);
     }//GEN-LAST:event_oraActionPerformed
 
     
