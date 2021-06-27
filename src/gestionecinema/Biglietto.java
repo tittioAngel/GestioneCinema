@@ -1,20 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package gestionecinema;
 
 
 import java.io.FileWriter;
 import java.io.IOException;
-import javax.swing.JOptionPane;
+
 
 
 public class Biglietto {
     private Proiezione scelta=new Proiezione();
-    private Posto p=new Posto(0,0);
     
     //costruttori
     public Biglietto(Proiezione scelta) {
@@ -25,7 +20,11 @@ public class Biglietto {
     }
     //metodi
     
-    //Stampa i biglietti richiesti
+    /**Stampa i biglietti richiesti in maniera appropriata rispetto alla quantità richiesta
+     * Verranno stampati in un documento di testo chiamato biglietto.txt
+     * @param nb numero di biglietti richiesti
+     * @throws IOException 
+     */
     public void stampaBiglietti(int nb) throws IOException{
         FileWriter f=new FileWriter("src\\gestionecinema\\biglietto.txt");
         int n=0;//tiene conto dei biglietti stampati
@@ -45,6 +44,14 @@ public class Biglietto {
         }
         f.close();
     }
+    /**
+     * Restituisce il totale del prezzo da pagare
+     * @param nb numero di biglietti chiesti
+     * @return String
+     */
+    public String prezzo(int nb){
+        return nb*5+" €";
+    }
 
     public Proiezione getScelta() {
         return scelta;
@@ -54,17 +61,9 @@ public class Biglietto {
         this.scelta = scelta;
     }
     
-    public Posto getP() {
-        return p;
-    }
-
-    public void setP(Posto p) {
-        this.p = p;
-    }
-
     @Override
     public String toString() {
-        return "Biglietto{" + "scelta=" + scelta + ", p=" + p + '}';
+        return "Biglietto{" + "scelta=" + scelta;
     }
     
     

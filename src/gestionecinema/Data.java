@@ -6,7 +6,12 @@ public class Data {
     private int giorno;
     private int mese;
     private int anno;
-
+/**
+ * 
+ * @param giorno int
+ * @param mese int 
+ * @param anno int
+ */
     Data(int giorno, int mese, int anno) {
         this.anno=anno;
         this.giorno=giorno;

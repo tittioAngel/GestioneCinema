@@ -16,6 +16,11 @@ public class Orario {
     private int minuto;
     
     //Costruttri
+    /**
+     * 
+     * @param ora int 
+     * @param minuto int
+     */
     public Orario(int ora,int minuto){
         this.ora=ora;
         this.minuto=minuto;

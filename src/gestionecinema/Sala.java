@@ -13,6 +13,17 @@ public class Sala {
     private int nLiberi=0;
 
     //costruttori
+    /**
+     * Rispetto al numero della sala vengono aggenati  il numero di posti e di file
+     * per la sala 1 ci saranno 40 posti e 4 file
+     * per la sala 2 ci saranno 50 posti e 5 file
+     * per la sala 3 ci saranno 60 posti e 6 file
+     * per la sala 2 ci saranno 70 posti e 7 file
+     * per la sala 2 ci saranno 80 posti e 8 file
+     * Viene poi creata la matrice di posti rispetto alle dimensioni
+     * @param numero int che identifica la sala
+     */
+    
     public Sala(int numero){
         this.numero = numero;
         switch(numero){
@@ -50,24 +61,36 @@ public class Sala {
     //metodi
     
     
-    //aggiorniamo il numero di posti liberi 
+    /**
+     * aggiorniamo il numero di posti liberi nella sala
+     */ 
     public void aggiornaPosti(){ 
         nLiberi--;
     }
     
-    //ci restituisce se la sala è piena o meno
+    /**
+     * Ci dice se la sala è piena o meno
+     * @return ci torna true se la sala è piena altrimenti torna falso
+     */
     public boolean pieno(){
         if (nLiberi!=0) return false; //se la sala non è piena torna falso
         else return true; // se la sala è piena torna true 
     }
     
-    //rende un posto occupato 
+    /**
+     * rende un determinato posto occupato e di conseguenza aggiorna i posti occupati
+     * @param posto  Posto
+     */
     public void occupaPosto(Posto posto){ 
         posti[posto.getFila()][posto.getSedile()].setOccupato(true);// il posto viene reso occupato
         nLiberi--; //aggiorniamo i posti occupati 
     }
          
-    //ci conta i posti liberi in una fila
+    /**
+     * Ci conta il numero di posti liberi nella fila data 
+     * @param f int, fila chiesta 
+     * @return int, il numero di posti liberi nella fila
+     */
     public int liberiFila(int f){
         int n=0; //n è il numero di posti liberi
         for(int i=0;i<gf;i++){ //un for per i posti che sono in una fila
@@ -76,16 +99,7 @@ public class Sala {
         }
         return n;
     }
-    
-    //ci stampa la matrice dei posti con numero e fila di posti 
-    public void getMatrice() {
-        for(int i=0;i<nf;i++){
-            for(int j=0;j<posti[i].length;j++){
-                System.out.print(posti[i][j].toString()+"  ");
-            }
-            System.out.println(" ");
-        }
-    }
+   
     
     public int getNf() {
         return nf;

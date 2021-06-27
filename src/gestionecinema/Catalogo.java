@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package gestionecinema;
 
 import java.io.File;
@@ -10,10 +6,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- *
- * @author matte
- */
+
 public class Catalogo {
     
     //Attributi
@@ -78,6 +71,13 @@ public class Catalogo {
      * @return lista delle sale per quel determinato film
      */
     
+    
+    /**
+     * Dati un titolo e un orario di un film il metodo ci restituisce il numero della sala dove avverrà la proiezione 
+     * @param titolo_Film String
+     * @param orario_Film String 
+     * @return int
+     */
     public int visualizzaSalaFilm(String titolo_Film, Orario orario_Film){
         int salaFilm = 0;
         for(Proiezione p:catalogo_consultabile){
@@ -90,9 +90,9 @@ public class Catalogo {
     }
     
     /**
-     * 
-     * @param titolo_Film
-     * @return 
+     * Dato il titolo di un film ci restituisce la lista degli orari relarivi al film
+     * @param titolo_Film Stirng 
+     * @return ArrayList<Orario>
      */
     public ArrayList visualizzaOrariFilm(String titolo_Film){
         ArrayList<Orario> orariFilm = new ArrayList<Orario>();
@@ -101,11 +101,16 @@ public class Catalogo {
                 orariFilm.add(p.getOrario_p()); 
             }
         }
-        
         return orariFilm;
     }
     
-    //metodo
+    /**
+     * Ci restituisce la proiezione del catalogo relativa ai titolo, ora e numero della sala 
+     * @param titolo String
+     * @param ora Orario
+     * @param s int , numero della sala 
+     * @return 
+     */
     public Proiezione proiezioneScelta(String titolo,Orario ora,int s){
         for(int i=0;i<catalogo_consultabile.size();i++){
             if(catalogo_consultabile.get(i).getFilm_p().getTitolo().equals(titolo)&& catalogo_consultabile.get(i).getOrario_p().getOra()==ora.getOra()&& catalogo_consultabile.get(i).getOrario_p().getMinuto()==ora.getMinuto()&& catalogo_consultabile.get(i).getSala_p().getNumero()==s)

@@ -22,6 +22,17 @@ public class Film {
     private String trama;
     
     //Costruttori
+    /**
+     * 
+     * @param titolo String 
+     * @param genere String
+     * @param regista String
+     * @param durata int
+     * @param anno int
+     * @param nazione String
+     * @param distribuzione String
+     * @param trama String
+     */
     public Film(String titolo, String genere, String regista, int durata, int anno, String nazione, String distribuzione, String trama) {
         this.titolo = titolo;
         this.genere = genere;

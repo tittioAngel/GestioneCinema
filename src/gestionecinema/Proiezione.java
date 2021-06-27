@@ -19,7 +19,12 @@ public class Proiezione {
     //Costruttori
     public Proiezione() {
     }
-    
+/**
+ * 
+ * @param film_p Film
+ * @param orario_p Orario 
+ * @param sala_p Sala
+ */    
     public Proiezione(Film film_p, Orario orario_p, Sala sala_p){
         this.film_p=film_p;
         this.orario_p=orario_p;

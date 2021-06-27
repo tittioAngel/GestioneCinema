@@ -44,6 +44,7 @@ public class Posto {
     }
 
     @Override
+ 
     public String toString() {
         switch(fila){
             case 0: return "Fila = A    Sedile = "+ (sedile+1);
