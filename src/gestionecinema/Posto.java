@@ -46,21 +46,21 @@ public class Posto {
     @Override
     public String toString() {
         switch(fila){
-            case 0: return "Fila: A    Posto: "+ (sedile+1);
+            case 0: return "Fila = A    Sedile = "+ (sedile+1);
                 
-            case 1: return "Fila: B   Posto: "+ (sedile+1);
+            case 1: return "Fila = B    Sedile = "+ (sedile+1);
                 
-            case 2: return "Fila: C    Posto: "+ (sedile+1);
+            case 2: return "Fila = C    Sedile = "+ (sedile+1);
                
-            case 3: return "Fila: D    Posto: "+ (sedile+1);
+            case 3: return "Fila = D    Sedile = "+ (sedile+1);
                 
-            case 4: return "Fila: E    Posto: "+ (sedile+1);
+            case 4: return "Fila = E    Sedile = "+ (sedile+1);
                 
-            case 5: return "Fila: F    Posto: "+ (sedile+1);
+            case 5: return "Fila = F    Sedile = "+ (sedile+1);
                 
-            case 6: return "Fila: G    Posto: "+ (sedile+1);
+            case 6: return "Fila = G    Sedile = "+ (sedile+1);
                
-            case 7: return "Fila: H    Posto: "+ (sedile+1);
+            case 7: return "Fila = H    Sedile = "+ (sedile+1);
             
             default: return "C'è qualcosa di sbagliato";
                 

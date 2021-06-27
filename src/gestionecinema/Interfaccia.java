@@ -81,6 +81,7 @@ public class Interfaccia extends javax.swing.JFrame {
 
         n_salaLabel.setText("N. SALA");
 
+        listaTitoli.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         listaTitoli.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 listaTitoliMouseClicked(evt);
