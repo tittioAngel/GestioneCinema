@@ -14,52 +14,52 @@ import javax.swing.JOptionPane;
 
 public class Biglietto {
     private Proiezione scelta=new Proiezione();
-    private int nb;
-    private Posto p=new Posto(0,Fila.A);
+    
+    private Posto p=new Posto(0,0);
 
-    public Biglietto(Proiezione scelta, int nb) {
+    public Biglietto(Proiezione scelta) {
         this.scelta = scelta;
-        this.nb = nb;
+        
     }
     public Biglietto(){
         
     }
 
-    public void trovaPosto(Posto p) throws IOException{
+    public void trovaPosto(Posto p,int nb) throws IOException{
         boolean trovato=false;
-
-        if(scelta.getSala_p().Pieno())
+        int f=p.getFila();
+       // int postiliberiFila=scelta.getSala_p().liberiFila(p.getFila());
+        if(scelta.getSala_p().pieno())
             JOptionPane.showMessageDialog(null,"LA SALA E' PIENA");
-        
         else{
-            while(!trovato){
-                if(scelta.getSala_p().LiberiFila(p.getFila())>=nb){
-                trovato=true;
-                stampaBiglietti(p);
-            }else{
-               Fila f=p.getFila();
-               f.getNext();
-               p.setFila(f);
-               trovaPosto(p);
-               
+            while(trovato==false){
+                if(scelta.getSala_p().liberiFila(p.getFila())<=nb){
+                    trovato=true;
+                    stampaBiglietti(p,nb);
+                }else{
+                    p.setFila(f+1);
+                    p.setSedile(0);
+                    trovaPosto(p,nb);
             }
         }
         }
 
     }
 
-    private void stampaBiglietti(Posto p) throws IOException{
-         FileWriter b = new FileWriter("Biglietti.txt");
-         for(int i=0;i<nb;i++){
-            if(scelta.getSala_p().getPosto()[p.getFila().ordinal()][p.getSedile()].isOccupato())
+    private void stampaBiglietti(Posto p,int nb) throws IOException{
+        int n=0;
+        FileWriter b = new FileWriter("Biglietti.txt");
+        for(int i=0;i<nb;i++){
+            if(scelta.getSala_p().getPosti()[p.getFila()][p.getSedile()].getOccupato()==false)
             {
-                b.write("Film: "+scelta.getFilm_p()+"   Ora: "+scelta.getOrario_p()+"\nSala: "+scelta.getSala_p()+"  Posto: "+p.toString());
-                scelta.getSala_p().PostoOccupato(p);
-                scelta.getSala_p().AggiornaPosti();
-                int n=p.getSedile()+1;
+                System.out.println("Film: "+scelta.getFilm_p().getTitolo()+"   Ora: "+scelta.getOrario_p()+"\nSala: "+scelta.getSala_p().getNumero()+"  Posto: "+p.toString());
+                b.write("Film: "+scelta.getFilm_p().getTitolo()+"   Ora: "+scelta.getOrario_p()+"\nSala: "+scelta.getSala_p().getNumero()+"  Posto: "+p.toString());
+                scelta.getSala_p().occupaPosto(p);
+                n=p.getSedile()+1;
                 p.setSedile(n);
             }
          }
+         
     }
 
     public Proiezione getScelta() {
@@ -69,15 +69,7 @@ public class Biglietto {
     public void setScelta(Proiezione scelta) {
         this.scelta = scelta;
     }
-
-    public int getNb() {
-        return nb;
-    }
-
-    public void setNb(int nb) {
-        this.nb = nb;
-    }
-
+    
     public Posto getP() {
         return p;
     }

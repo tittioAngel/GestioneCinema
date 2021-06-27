@@ -18,10 +18,11 @@ public class Catalogo {
     
     //Attributi
     private ArrayList<Proiezione> catalogo_consultabile;
-    
+
     //Costruttori
     public Catalogo() {
         this.catalogo_consultabile = new ArrayList<Proiezione>();
+
     }
     
     //Metodi
@@ -50,8 +51,8 @@ public class Catalogo {
             String[] parts = orario.split(":");
             int ora = Integer.parseInt(parts[0]);
             int minuto = Integer.parseInt(parts[1]);
-            p.setFilm_p(new Film(titolo, genere, regista, durata, anno, nazione, distribuzione, trama));
             p.setSala_p(new Sala(numero_sala));
+            p.setFilm_p(new Film(titolo, genere, regista, durata, anno, nazione, distribuzione, trama));
             p.setOrario_p(new Orario(ora,minuto));
             this.catalogo_consultabile.add(p);
         }
@@ -77,20 +78,15 @@ public class Catalogo {
      * @return lista delle sale per quel determinato film
      */
     
-    public Sala visualizzaSalaFilm(String titolo_Film, Orario orario_Film){
+    public int visualizzaSalaFilm(String titolo_Film, Orario orario_Film){
         int salaFilm = 0;
         for(Proiezione p:catalogo_consultabile){
             if(p.getFilm_p().getTitolo().equals(titolo_Film) && p.getOrario_p().getOra()==orario_Film.getOra() && orario_Film.getMinuto()==p.getOrario_p().getMinuto()){
                 salaFilm = p.getSala_p().getNumero();
             }
         }
- 
-        for(Proiezione p:catalogo_consultabile){
-            if(p.getSala_p().getNumero()==salaFilm)
-               return p.getSala_p();
-        }
-       
-        return null;
+
+        return salaFilm;
     }
     
     /**
@@ -110,13 +106,18 @@ public class Catalogo {
     }
     
     
-    public Proiezione proiezioneScelta(String titolo,Orario ora,Sala s){
+    public Proiezione proiezioneScelta(String titolo,Orario ora,int s){
         for(int i=0;i<catalogo_consultabile.size();i++){
-            if(catalogo_consultabile.get(i).getFilm_p().getTitolo()==titolo && catalogo_consultabile.get(i).getOrario_p().equals(ora) && catalogo_consultabile.get(i).getSala_p().equals(s))
+            if(catalogo_consultabile.get(i).getFilm_p().getTitolo()==titolo && catalogo_consultabile.get(i).getOrario_p().equals(ora) && catalogo_consultabile.get(i).getSala_p().getNumero()==s)
                 return catalogo_consultabile.get(i);
         }
         return null;
     }
+
+    public ArrayList<Proiezione> getCatalogo_consultabile() {
+        return catalogo_consultabile;
+    }
+    
     public void VisualizzaCatalogo(){
         for(Proiezione p: catalogo_consultabile){
             System.out.println(p);

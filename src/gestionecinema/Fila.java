@@ -10,9 +10,8 @@ public enum Fila {
     E,
     F,
     G,
-    H,
-    I,
-    J;
+    H;
+    
     public Fila getNext(){
         Fila[] f= Fila.values();
         int i =0;

@@ -20,7 +20,8 @@ public class Interfaccia extends javax.swing.JFrame {
     /**
      * Creates new form Interfaccia
      */
-    public Interfaccia() {
+    public Interfaccia(Sala s1,Sala s2,Sala s3,Sala s4,Sala s5) {
+        
         initComponents();
         try {
             c.riempiCatalogo();
@@ -183,6 +184,7 @@ public class Interfaccia extends javax.swing.JFrame {
 
     private void stampaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stampaActionPerformed
         
+        try {
             /*o = ora.getSelectedItem().toString();
             String[] parti = o.split(":");
             int oo= Integer.parseInt(parti[0]);
@@ -191,19 +193,15 @@ public class Interfaccia extends javax.swing.JFrame {
             //Sala sala=c.visualizzaSalaFilm(s, orario);
             //b.setScelta(c.proiezioneScelta(s,orario,c.visualizzaSalaFilm(s, orario)));
             //b.setNb(n);*/
-            stampaBiglietti();
-
-  
-    }//GEN-LAST:event_stampaActionPerformed
-    
-    private void stampaBiglietti(){
-        try {
-            b.trovaPosto(p);
+        
+            b.trovaPosto(p,n);
         } catch (IOException ex) {
             Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
-    }
+  
+    }//GEN-LAST:event_stampaActionPerformed
+    
+
     
     private void oraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oraActionPerformed
         jTextField1.setVisible(true);
@@ -216,9 +214,10 @@ public class Interfaccia extends javax.swing.JFrame {
         b.setScelta(c.proiezioneScelta(s,orario,c.visualizzaSalaFilm(s, orario)));
     }//GEN-LAST:event_oraActionPerformed
 
+    
+    
     private void qtaComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qtaComboActionPerformed
-        //n=qtaCombo.getSelectedIndex()+1;
-        b.setNb(qtaCombo.getSelectedIndex()+1);
+        n=qtaCombo.getSelectedIndex()+1;
     }//GEN-LAST:event_qtaComboActionPerformed
     
     /**
@@ -273,11 +272,11 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JButton stampa;
     // End of variables declaration//GEN-END:variables
     private String s,o;
-    private Catalogo c = new Catalogo();
+    private Catalogo c = new Catalogo(s1,s2,s3,s4,s5);
     public String getS() {
         return s;
     }
     Biglietto b=new Biglietto();
     private int n;
-    private Posto p=new Posto(0,Fila.A);
+    private Posto p=new Posto(0,0);
 }
