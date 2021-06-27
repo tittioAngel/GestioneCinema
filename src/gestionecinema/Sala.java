@@ -14,12 +14,12 @@ public class Sala {
 
     //costruttori
     /**
-     * Rispetto al numero della sala vengono aggenati  il numero di posti e di file
-     * per la sala 1 ci saranno 40 posti e 4 file
-     * per la sala 2 ci saranno 50 posti e 5 file
-     * per la sala 3 ci saranno 60 posti e 6 file
-     * per la sala 2 ci saranno 70 posti e 7 file
-     * per la sala 2 ci saranno 80 posti e 8 file
+     * Rispetto al numero della sala vengono assegnati  il numero di posti e di file.
+     * Per la sala 1 ci saranno 40 posti e 4 file;
+     * per la sala 2 ci saranno 50 posti e 5 file;
+     * per la sala 3 ci saranno 60 posti e 6 file;
+     * per la sala 2 ci saranno 70 posti e 7 file;
+     * per la sala 2 ci saranno 80 posti e 8 file;
      * Viene poi creata la matrice di posti rispetto alle dimensioni
      * @param numero int che identifica la sala
      */

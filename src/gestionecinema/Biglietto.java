@@ -6,7 +6,10 @@ package gestionecinema;
 import java.io.FileWriter;
 import java.io.IOException;
 
-
+/**
+ * La classe biglietto ci costruisce i biglietti di uno spettacolo, dandoci il posto giusto in base quanti biglietti si stanno acquistando
+ * @author matte
+ */
 
 public class Biglietto {
     private Proiezione scelta=new Proiezione();
