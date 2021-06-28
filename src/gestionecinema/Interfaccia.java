@@ -7,9 +7,11 @@ package gestionecinema;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import static java.lang.Character.UnicodeScript.values;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -150,10 +152,10 @@ public class Interfaccia extends javax.swing.JFrame {
                                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                     .add(qtaCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                     .add(ora, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 75, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 28, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                     .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                                        .add(org.jdesktop.layout.GroupLayout.LEADING, jTextField3)
-                                        .add(org.jdesktop.layout.GroupLayout.LEADING, jTextField1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)))))
+                                        .add(org.jdesktop.layout.GroupLayout.LEADING, jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                                        .add(org.jdesktop.layout.GroupLayout.LEADING, jTextField1)))))
                         .add(49, 49, Short.MAX_VALUE))
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -234,23 +236,33 @@ public class Interfaccia extends javax.swing.JFrame {
         for(int j=0; j<c.visualizzaOrariFilm(s).size(); j++){
             ora.addItem(c.visualizzaOrariFilm(s).get(j).toString());
         }
+        n=qtaCombo.getSelectedIndex()+1;
+        jTextField2.setText(b.prezzo(n));
     }//GEN-LAST:event_listaTitoliMouseClicked
 
     private void stampaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stampaActionPerformed
-        
         try {
             b.stampaBiglietti(n);
             
         } catch (IOException ex) {
             Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println(b.getScelta().getSala_p().getnLiberi());
+        //this.jTextField3.setText(b.getScelta().getSala_p().getnLiberi()+"");
+        
+        this.jTextField1.setText("");
+        this.jTextField2.setText("");
+        this.jTextField3.setText("");
+        
+        this.listaTitoli.clearSelection();
+        this.ora.removeAllItems();
+        
     }//GEN-LAST:event_stampaActionPerformed
     
 
     
     private void oraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oraActionPerformed
         jTextField1.setVisible(true);
+        
         o = ora.getSelectedItem().toString();
         String[] parti = o.split(":");
         int ora= Integer.parseInt(parti[0]);
@@ -258,8 +270,20 @@ public class Interfaccia extends javax.swing.JFrame {
         Orario orario = new Orario(ora,minuto);
         jTextField1.setText(c.visualizzaSalaFilm(s, orario)+"");
         b.setScelta(c.proiezioneScelta(s,orario,c.visualizzaSalaFilm(s, orario)));
-        /*if(b.getScelta().getSala_p().getnLiberi()!=0) jTextField3.setText(b.getScelta().getSala_p().getnLiberi()+" ");
-        else JOptionPane.showMessageDialog(null,"ATTENZIONE LA SALA E' PIENA!");*/
+        jTextField2.setText(b.prezzo(n));
+        if(b.getScelta().getSala_p().getnLiberi()==0){
+            JOptionPane.showMessageDialog(null, "ATTENZIONE!!\nLa sala "+b.getScelta().getSala_p().getNumero()+" alle ore "+b.getScelta().getOrario_p().toString()+" è PIENA");
+            this.jTextField1.setText("");
+            this.jTextField2.setText("");
+            this.jTextField3.setText("");
+            this.listaTitoli.clearSelection();
+            this.ora.removeAllItems();
+        }else{    
+            this.jTextField3.setText(b.getScelta().getSala_p().getnLiberi()+"");
+        }    
+            
+        
+        
     }//GEN-LAST:event_oraActionPerformed
 
     

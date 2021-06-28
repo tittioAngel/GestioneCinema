@@ -1,6 +1,12 @@
 Biglietto numero: 1
-Film: The Conjuring: The Devil Made Me Do It
-Orario: 22:20
-Sala: 4
-Posto: Fila = B    Sedile = 8
+Film: Cruella
+Orario: 15:30
+Sala: 1
+Posto: Fila = D    Sedile = 9
+
+Biglietto numero: 2
+Film: Cruella
+Orario: 15:30
+Sala: 1
+Posto: Fila = D    Sedile = 10
 

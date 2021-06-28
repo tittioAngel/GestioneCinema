@@ -46,9 +46,15 @@ public class Orario {
     @Override
     public String toString() {
         String min="";
-        if(minuto==0)  min="00";
-        else    min=""+minuto;
-        return ora + ":" + min;
+        if(this.equals(null)){
+            return null;
+        }else{
+            if(minuto==0)  min="00";
+            else    min=""+minuto;
+            return ora + ":" + min;  
+        }
+            
+        
     }
     
 }
