@@ -3,14 +3,9 @@
 package gestionecinema;
 
 
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import javax.swing.JOptionPane;
 
-/**
- * La classe biglietto ci costruisce i biglietti di uno spettacolo, dandoci il posto giusto in base quanti biglietti si stanno acquistando
- * @author matte
- */
 
 public class Biglietto {
     private Proiezione scelta=new Proiezione();
@@ -24,13 +19,18 @@ public class Biglietto {
     }
     //metodi
     
-    /**Stampa i biglietti richiesti in maniera appropriata rispetto alla quantità richiesta
+    /**
+     * Stampa i biglietti richiesti in maniera appropriata rispetto alla quantità richiesta
      * Verranno stampati in un documento di testo chiamato biglietto.txt
      * @param nb numero di biglietti richiesti
      * @throws IOException 
      */
     public void stampaBiglietti(int nb) throws IOException{
         FileWriter f=new FileWriter("src\\gestionecinema\\biglietto.txt");
+        File storico_biglietti=new File("src\\gestionecinema\\storico_biglietti.txt");
+        File posti_occupati=new File("src\\gestionecinema\\posti_occupati.txt");
+        Writer output = null;
+        output = new BufferedWriter(new FileWriter(storico_biglietti, true));
         int n=0;//tiene conto dei biglietti stampati
         if(scelta.getSala_p().getnLiberi()>=nb){
             for(int i=0;i<scelta.getSala_p().getNf();i++){ // scorriamo le file
@@ -40,6 +40,9 @@ public class Biglietto {
                             f.write("Biglietto numero: "+(n+1)+"\n");//System.out.println(scelta.getFilm_p().getTitolo()+"  ora: "+scelta.getOrario_p().toString()+"\n"+scelta.getSala_p().getNumero()+" Posto: "+scelta.getSala_p().getPosti()[i][j]);
                             f.write("Film: "+scelta.getFilm_p().getTitolo()+"\nOrario: "+scelta.getOrario_p().toString()+"\nSala: "+scelta.getSala_p().getNumero()+"\nPosto: "+scelta.getSala_p().getPosti()[i][j]);
                             f.write("\n\n");
+                            output.write("Biglietto numero: "+(n+1)+"\n");//System.out.println(scelta.getFilm_p().getTitolo()+"  ora: "+scelta.getOrario_p().toString()+"\n"+scelta.getSala_p().getNumero()+" Posto: "+scelta.getSala_p().getPosti()[i][j]);
+                            output.write("Film: "+scelta.getFilm_p().getTitolo()+"\nOrario: "+scelta.getOrario_p().toString()+"\nSala: "+scelta.getSala_p().getNumero()+"\nPosto: "+scelta.getSala_p().getPosti()[i][j]);
+                            output.write("\n");
                             scelta.getSala_p().occupaPosto(scelta.getSala_p().getPosti()[i][j]); // rendiamo il posto occupato
                             n++;// aggiorniamo i biglietti stampati
                         }
@@ -47,7 +50,12 @@ public class Biglietto {
                 }
                 
             }
+            for(int i=0;i<50;i++){
+                output.write("-");
+            }
+            output.write("\n");
             f.close();
+            output.close();
         }else{
             JOptionPane.showMessageDialog(null, "ATTENZIONE!!\nLa sala "+scelta.getSala_p().getNumero()+" alle ore "+scelta.getOrario_p().toString()+" non ha abbastanza POSTI LIBERI");
         }

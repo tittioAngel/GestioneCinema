@@ -5,10 +5,7 @@
  */
 package gestionecinema;
 
-/**
- *La classe film ci identifica un film con i suoi attributi 
- * @author matte
- */
+
 public class Film {
     
     //Attributi

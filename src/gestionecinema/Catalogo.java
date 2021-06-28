@@ -6,10 +6,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- * La classe catalogo costriusce un catalogo di proiezioni inserite da file 
- * @author matte
- */
+
 public class Catalogo {
     
     //Attributi

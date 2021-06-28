@@ -14,10 +14,7 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author matte
- */
+
 public class Interfaccia extends javax.swing.JFrame {
 
     /**

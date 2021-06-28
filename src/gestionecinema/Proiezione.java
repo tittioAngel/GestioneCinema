@@ -5,10 +5,7 @@
  */
 package gestionecinema;
 
-/**
- *
- * @author matte
- */
+
 public class Proiezione {
     
     //Attributi
