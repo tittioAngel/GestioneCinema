@@ -1,30 +1,18 @@
 Biglietto numero: 1
 Film: The Conjuring: The Devil Made Me Do It
-Orario: 20:10
-Sala: 1
+Orario: 22:20
+Sala: 4
 Posto: Fila = A    Sedile = 1
 
 Biglietto numero: 2
 Film: The Conjuring: The Devil Made Me Do It
-Orario: 20:10
-Sala: 1
+Orario: 22:20
+Sala: 4
 Posto: Fila = A    Sedile = 2
 
 Biglietto numero: 3
 Film: The Conjuring: The Devil Made Me Do It
-Orario: 20:10
-Sala: 1
+Orario: 22:20
+Sala: 4
 Posto: Fila = A    Sedile = 3
-
-Biglietto numero: 4
-Film: The Conjuring: The Devil Made Me Do It
-Orario: 20:10
-Sala: 1
-Posto: Fila = A    Sedile = 4
-
-Biglietto numero: 5
-Film: The Conjuring: The Devil Made Me Do It
-Orario: 20:10
-Sala: 1
-Posto: Fila = A    Sedile = 5
 
