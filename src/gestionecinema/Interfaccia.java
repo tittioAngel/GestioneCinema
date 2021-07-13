@@ -28,6 +28,15 @@ public class Interfaccia extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
         }
+        String []s=new String[c.listaTitoliFilm().size()];
+        for (int j=0;j<c.listaTitoliFilm().size();j++){
+            s[j]=(String) (c.listaTitoliFilm().get(j));
+        } 
+        
+        listaTitoli.setListData(s);
+        listaTitoli.getLastVisibleIndex();
+        
+        this.stampa.setEnabled(false);
         
     }
 
@@ -52,7 +61,6 @@ public class Interfaccia extends javax.swing.JFrame {
         orariLabel = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         ora = new javax.swing.JComboBox<>();
-        reset = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -61,6 +69,8 @@ public class Interfaccia extends javax.swing.JFrame {
         jCheckBox1.setText("jCheckBox1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setEnabled(false);
 
         Titolo.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         Titolo.setText("CINEMA");
@@ -99,21 +109,20 @@ public class Interfaccia extends javax.swing.JFrame {
         jTextField1.setEnabled(false);
 
         ora.setEnabled(false);
+        ora.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                oraMouseClicked(evt);
+            }
+        });
         ora.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 oraActionPerformed(evt);
             }
         });
 
-        reset.setText("RESET");
-        reset.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resetActionPerformed(evt);
-            }
-        });
-
         jLabel1.setText("PREZZO");
 
+        jTextField2.setEnabled(false);
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -122,6 +131,7 @@ public class Interfaccia extends javax.swing.JFrame {
 
         jLabel3.setText("POSTI LIBERI");
 
+        jTextField3.setEnabled(false);
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
@@ -157,8 +167,7 @@ public class Interfaccia extends javax.swing.JFrame {
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(jPanel1Layout.createSequentialGroup()
-                                .add(reset, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 73, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .add(0, 0, Short.MAX_VALUE)
                                 .add(stampa, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 104, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                             .add(jPanel1Layout.createSequentialGroup()
                                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -198,9 +207,7 @@ public class Interfaccia extends javax.swing.JFrame {
                             .add(jLabel1)
                             .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                         .add(18, 18, 18)
-                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(stampa)
-                            .add(reset))))
+                        .add(stampa)))
                 .add(21, 21, 21))
         );
 
@@ -225,16 +232,24 @@ public class Interfaccia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void listaTitoliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaTitoliMouseClicked
-        ora.removeAllItems();
-        ora.setEnabled(true);
-        qtaCombo.setEnabled(true);
+        
+        this.ora.setEnabled(false);
+        this.ora.removeAllItems();
+        
+        
+        this.qtaCombo.setEnabled(true);
+        this.stampa.setEnabled(true);
         
         s = listaTitoli.getSelectedValue();
+        
+
         for(int j=0; j<c.visualizzaOrariFilm(s).size(); j++){
             ora.addItem(c.visualizzaOrariFilm(s).get(j).toString());
         }
+        this.ora.setEnabled(true);
         n=qtaCombo.getSelectedIndex()+1;
         jTextField2.setText(b.prezzo(n));
+        
     }//GEN-LAST:event_listaTitoliMouseClicked
 
     private void stampaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stampaActionPerformed
@@ -250,21 +265,35 @@ public class Interfaccia extends javax.swing.JFrame {
         this.jTextField2.setText("");
         this.jTextField3.setText("");
         
+        this.ora.setEnabled(false);
+        
         this.listaTitoli.clearSelection();
         this.ora.removeAllItems();
         
+        
     }//GEN-LAST:event_stampaActionPerformed
     
+    private void qtaComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qtaComboActionPerformed
+        n=qtaCombo.getSelectedIndex()+1;
+        jTextField2.setText(b.prezzo(n));
+    }//GEN-LAST:event_qtaComboActionPerformed
 
-    
-    private void oraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oraActionPerformed
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void oraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_oraMouseClicked
+        // TODO add your handling code here:
         jTextField1.setVisible(true);
-        
         o = ora.getSelectedItem().toString();
         String[] parti = o.split(":");
-        int ora= Integer.parseInt(parti[0]);
+        int ora1= Integer.parseInt(parti[0]);
         int minuto= Integer.parseInt(parti[1]);
-        Orario orario = new Orario(ora,minuto);
+        orario = new Orario(ora1,minuto);
         jTextField1.setText(c.visualizzaSalaFilm(s, orario)+"");
         b.setScelta(c.proiezioneScelta(s,orario,c.visualizzaSalaFilm(s, orario)));
         jTextField2.setText(b.prezzo(n));
@@ -277,30 +306,14 @@ public class Interfaccia extends javax.swing.JFrame {
             this.ora.removeAllItems();
         }else{    
             this.jTextField3.setText(b.getScelta().getSala_p().getnLiberi()+"");
-        }    
-            
+        }
         
+    }//GEN-LAST:event_oraMouseClicked
+
+    private void oraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oraActionPerformed
+        // TODO add your handling code here:
         
     }//GEN-LAST:event_oraActionPerformed
-
-    
-    
-    private void qtaComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qtaComboActionPerformed
-        n=qtaCombo.getSelectedIndex()+1;
-        jTextField2.setText(b.prezzo(n));
-    }//GEN-LAST:event_qtaComboActionPerformed
-
-    private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
-        
-    }//GEN-LAST:event_resetActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -355,7 +368,6 @@ public class Interfaccia extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> ora;
     private javax.swing.JLabel orariLabel;
     public javax.swing.JComboBox<String> qtaCombo;
-    private javax.swing.JButton reset;
     private javax.swing.JButton stampa;
     // End of variables declaration//GEN-END:variables
     private String s,o;
@@ -366,4 +378,5 @@ public class Interfaccia extends javax.swing.JFrame {
     Biglietto b=new Biglietto();
     private int n;
     private Posto p=new Posto(0,0);
+    Orario orario;
 }
