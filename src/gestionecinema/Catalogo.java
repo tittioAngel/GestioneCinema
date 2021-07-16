@@ -10,13 +10,12 @@ import java.util.Scanner;
 public class Catalogo {
     
     //Attributi
-    private ArrayList<Proiezione> catalogo_consultabile;
+    private ArrayList<Proiezione> catalogo_consultabile = new ArrayList<Proiezione>();
 
     //Costruttori
 
     public Catalogo() {
-        this.catalogo_consultabile = new ArrayList<Proiezione>();
-
+        
     }
     
     //Metodi
@@ -26,8 +25,10 @@ public class Catalogo {
      * @throws FileNotFoundException 
      */
     public void riempiCatalogo() throws FileNotFoundException{
+        
         File in = new File("src\\gestionecinema\\proiezioni.txt");
         Scanner input = new Scanner(in);
+        
         while(input.hasNextLine()){
             Proiezione p = new Proiezione();
             String titolo = input.nextLine();
@@ -45,9 +46,11 @@ public class Catalogo {
             String[] parts = orario.split(":");
             int ora = Integer.parseInt(parts[0]);
             int minuto = Integer.parseInt(parts[1]);
-            p.setSala_p(new Sala(numero_sala));
+            
             p.setFilm_p(new Film(titolo, genere, regista, durata, anno, nazione, distribuzione, trama));
+            p.setSala_p(new Sala(numero_sala));
             p.setOrario_p(new Orario(ora,minuto));
+            
             this.catalogo_consultabile.add(p);
         }
     }
@@ -72,7 +75,13 @@ public class Catalogo {
      * @return lista delle sale per quel determinato film
      */
     
-    
+    public Film restituisciFilm(String titolo){
+        for(Proiezione p: catalogo_consultabile){
+            if(p.getFilm_p().getTitolo().equals(titolo))
+                return p.getFilm_p();
+        }
+        return null;
+    }    
     /**
      * Dati un titolo e un orario di un film il metodo ci restituisce il numero della sala dove avverrà la proiezione 
      * @param titolo_Film String
@@ -115,6 +124,14 @@ public class Catalogo {
     public Proiezione proiezioneScelta(String titolo,Orario ora,int s){
         for(int i=0;i<catalogo_consultabile.size();i++){
             if(catalogo_consultabile.get(i).getFilm_p().getTitolo().equals(titolo)&& catalogo_consultabile.get(i).getOrario_p().getOra()==ora.getOra()&& catalogo_consultabile.get(i).getOrario_p().getMinuto()==ora.getMinuto()&& catalogo_consultabile.get(i).getSala_p().getNumero()==s)
+                return catalogo_consultabile.get(i);
+        }
+        return null;
+    }
+    
+    public Proiezione proiezioneScelta(Orario ora,int s){
+        for(int i=0;i<catalogo_consultabile.size();i++){
+            if(catalogo_consultabile.get(i).getOrario_p().getOra()==ora.getOra()&& catalogo_consultabile.get(i).getOrario_p().getMinuto()==ora.getMinuto()&& catalogo_consultabile.get(i).getSala_p().getNumero()==s)
                 return catalogo_consultabile.get(i);
         }
         return null;

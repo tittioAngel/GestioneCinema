@@ -39,8 +39,8 @@ public class Biglietto {
                             f.write("Biglietto numero: "+(n+1)+"\n");
                             f.write("Film: "+scelta.getFilm_p().getTitolo()+"\nOrario: "+scelta.getOrario_p().toString()+"\nSala: "+scelta.getSala_p().getNumero()+"\nPosto: "+scelta.getSala_p().getPosti()[i][j]);
                             f.write("\n\n");
-                            output.write("Film: "+scelta.getFilm_p().getTitolo()+"\nOrario: "+scelta.getOrario_p().toString()+"\nSala: "+scelta.getSala_p().getNumero()+"\nPosto: "+scelta.getSala_p().getPosti()[i][j]);
-                            output.write("\n\n");
+                            output.write(scelta.getSala_p().getNumero()+","+scelta.getOrario_p()+","+scelta.getSala_p().getPosti()[i][j].getFila()+","+scelta.getSala_p().getPosti()[i][j].getSedile());
+                            output.write("\n");
                             scelta.getSala_p().occupaPosto(scelta.getSala_p().getPosti()[i][j]); // rendiamo il posto occupato
                             n++;// aggiorniamo i biglietti stampati
                         }
@@ -48,10 +48,6 @@ public class Biglietto {
                 }
                 
             }
-            for(int i=0;i<50;i++){
-                output.write("-");
-            }
-            output.write("\n");
             f.close();
             output.close();
         }else{

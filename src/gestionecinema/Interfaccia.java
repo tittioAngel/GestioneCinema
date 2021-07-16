@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.*;
 
 
 public class Interfaccia extends javax.swing.JFrame {
@@ -53,24 +54,26 @@ public class Interfaccia extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         Titolo = new javax.swing.JLabel();
         qtaCombo = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
+        qtaBigliettiLabel = new javax.swing.JLabel();
         stampa = new javax.swing.JButton();
         n_salaLabel = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        ListaTitoliFilm = new javax.swing.JScrollPane();
         listaTitoli = new javax.swing.JList<>();
         orariLabel = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        numSala = new javax.swing.JTextField();
         ora = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        prezzo = new javax.swing.JLabel();
+        prezzoTot = new javax.swing.JTextField();
+        postiLibLabel = new javax.swing.JLabel();
+        numPostiLib = new javax.swing.JTextField();
+        infoFilm = new javax.swing.JButton();
 
         jCheckBox1.setText("jCheckBox1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setEnabled(false);
+        jPanel1.setPreferredSize(new java.awt.Dimension(508, 700));
 
         Titolo.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         Titolo.setText("CINEMA");
@@ -85,7 +88,7 @@ public class Interfaccia extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("QTA DI BIGLIETTI");
+        qtaBigliettiLabel.setText("QTA DI BIGLIETTI");
 
         stampa.setText("STAMPA");
         stampa.addActionListener(new java.awt.event.ActionListener() {
@@ -102,11 +105,11 @@ public class Interfaccia extends javax.swing.JFrame {
                 listaTitoliMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(listaTitoli);
+        ListaTitoliFilm.setViewportView(listaTitoli);
 
         orariLabel.setText("ORARI DISPONIBILI");
 
-        jTextField1.setEnabled(false);
+        numSala.setEnabled(false);
 
         ora.setEnabled(false);
         ora.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -114,27 +117,20 @@ public class Interfaccia extends javax.swing.JFrame {
                 oraMouseClicked(evt);
             }
         });
-        ora.addActionListener(new java.awt.event.ActionListener() {
+
+        prezzo.setText("PREZZO");
+
+        prezzoTot.setEnabled(false);
+
+        postiLibLabel.setText("POSTI LIBERI");
+
+        numPostiLib.setEnabled(false);
+
+        infoFilm.setText("INFO FILM");
+        infoFilm.setEnabled(false);
+        infoFilm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                oraActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("PREZZO");
-
-        jTextField2.setEnabled(false);
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("POSTI LIBERI");
-
-        jTextField3.setEnabled(false);
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                infoFilmActionPerformed(evt);
             }
         });
 
@@ -144,25 +140,24 @@ public class Interfaccia extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 241, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(ListaTitoliFilm, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 241, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(infoFilm, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 93, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(18, 18, 18)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(Titolo)
-                            .add(jPanel1Layout.createSequentialGroup()
-                                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(orariLabel)
-                                    .add(jLabel2)
-                                    .add(n_salaLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 48, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                                .add(18, 18, 18)
-                                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(qtaCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                    .add(ora, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 75, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                    .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                    .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                                        .add(org.jdesktop.layout.GroupLayout.LEADING, jTextField3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                                        .add(org.jdesktop.layout.GroupLayout.LEADING, jTextField1)))))
+                            .add(orariLabel)
+                            .add(qtaBigliettiLabel)
+                            .add(n_salaLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 48, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(18, 18, 18)
+                        .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(qtaCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(ora, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 75, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(prezzoTot, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                                .add(org.jdesktop.layout.GroupLayout.LEADING, numPostiLib, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                                .add(org.jdesktop.layout.GroupLayout.LEADING, numSala)))
                         .add(49, 49, Short.MAX_VALUE))
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -171,44 +166,54 @@ public class Interfaccia extends javax.swing.JFrame {
                                 .add(stampa, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 104, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                             .add(jPanel1Layout.createSequentialGroup()
                                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(jLabel1)
-                                    .add(jLabel3))
+                                    .add(prezzo)
+                                    .add(postiLibLabel))
                                 .add(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
+            .add(jPanel1Layout.createSequentialGroup()
+                .add(190, 190, 190)
+                .add(Titolo)
+                .add(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .add(Titolo)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel1Layout.createSequentialGroup()
-                        .add(50, 50, 50)
-                        .add(jScrollPane1))
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .add(Titolo)
-                        .add(36, 36, 36)
+                        .add(52, 52, 52)
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(orariLabel)
                             .add(ora, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                         .add(8, 8, 8)
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(n_salaLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 23, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jTextField1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 11, Short.MAX_VALUE)
+                            .add(numSala, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 18, Short.MAX_VALUE)
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jLabel3)
-                            .add(jTextField3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                            .add(postiLibLabel)
+                            .add(numPostiLib, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                         .add(18, 18, 18)
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jLabel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(qtaBigliettiLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 20, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(qtaCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jLabel1)
-                            .add(jTextField2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .add(18, 18, 18)
-                        .add(stampa)))
-                .add(21, 21, 21))
+                            .add(prezzo)
+                            .add(prezzoTot, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(18, 18, 18))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(ListaTitoliFilm, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 205, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(2, 2, 2)))
+                .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(stampa)
+                        .add(31, 31, 31))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .add(infoFilm)
+                        .add(20, 20, 20))))
         );
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
@@ -217,104 +222,92 @@ public class Interfaccia extends javax.swing.JFrame {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .add(jPanel1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void oraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_oraMouseClicked
+        // TODO add your handling code here:
+        numSala.setVisible(true);
+        o = ora.getSelectedItem().toString();
+        System.out.println(o);
+        String[] parti = o.split(":");
+        int ora1= Integer.parseInt(parti[0]);
+        int minuto= Integer.parseInt(parti[1]);
+        orario = new Orario(ora1,minuto);
+        numSala.setText(c.visualizzaSalaFilm(s, orario)+"");
+        b.setScelta(c.proiezioneScelta(s,orario,c.visualizzaSalaFilm(s, orario)));
+        prezzoTot.setText(b.prezzo(n));
+        if(b.getScelta().getSala_p().getnLiberi()==0){
+            JOptionPane.showMessageDialog(null, "La sala "+b.getScelta().getSala_p().getNumero()+" alle ore "+b.getScelta().getOrario_p().toString()+" è PIENA","ATTENZIONE!!",ERROR_MESSAGE);
+            this.numSala.setText("");
+            this.prezzoTot.setText("");
+            this.numPostiLib.setText("");
+            this.listaTitoli.clearSelection();
+            this.ora.removeAllItems();
+        }else{
+            this.numPostiLib.setText(b.getScelta().getSala_p().getnLiberi()+"");
+        }
+    }//GEN-LAST:event_oraMouseClicked
+
     private void listaTitoliMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaTitoliMouseClicked
-        
+
         this.ora.setEnabled(false);
         this.ora.removeAllItems();
-        
-        
+
         this.qtaCombo.setEnabled(true);
         this.stampa.setEnabled(true);
-        
+
         s = listaTitoli.getSelectedValue();
-        
 
         for(int j=0; j<c.visualizzaOrariFilm(s).size(); j++){
             ora.addItem(c.visualizzaOrariFilm(s).get(j).toString());
         }
         this.ora.setEnabled(true);
         n=qtaCombo.getSelectedIndex()+1;
-        jTextField2.setText(b.prezzo(n));
+        prezzoTot.setText(b.prezzo(n));
         
+        this.infoFilm.setEnabled(true);
     }//GEN-LAST:event_listaTitoliMouseClicked
 
     private void stampaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stampaActionPerformed
         try {
             b.stampaBiglietti(n);
-            
+
         } catch (IOException ex) {
             Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
         }
         //this.jTextField3.setText(b.getScelta().getSala_p().getnLiberi()+"");
-        
-        this.jTextField1.setText("");
-        this.jTextField2.setText("");
-        this.jTextField3.setText("");
-        
+
+        this.numSala.setText("");
+        this.prezzoTot.setText("");
+        this.numPostiLib.setText("");
+
         this.ora.setEnabled(false);
-        
+
         this.listaTitoli.clearSelection();
         this.ora.removeAllItems();
-        
-        
     }//GEN-LAST:event_stampaActionPerformed
-    
+
     private void qtaComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qtaComboActionPerformed
         n=qtaCombo.getSelectedIndex()+1;
-        jTextField2.setText(b.prezzo(n));
+        prezzoTot.setText(b.prezzo(n));
     }//GEN-LAST:event_qtaComboActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void infoFilmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoFilmActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void oraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_oraMouseClicked
-        // TODO add your handling code here:
-        jTextField1.setVisible(true);
-        o = ora.getSelectedItem().toString();
-        String[] parti = o.split(":");
-        int ora1= Integer.parseInt(parti[0]);
-        int minuto= Integer.parseInt(parti[1]);
-        orario = new Orario(ora1,minuto);
-        jTextField1.setText(c.visualizzaSalaFilm(s, orario)+"");
-        b.setScelta(c.proiezioneScelta(s,orario,c.visualizzaSalaFilm(s, orario)));
-        jTextField2.setText(b.prezzo(n));
-        if(b.getScelta().getSala_p().getnLiberi()==0){
-            JOptionPane.showMessageDialog(null, "ATTENZIONE!!\nLa sala "+b.getScelta().getSala_p().getNumero()+" alle ore "+b.getScelta().getOrario_p().toString()+" è PIENA");
-            this.jTextField1.setText("");
-            this.jTextField2.setText("");
-            this.jTextField3.setText("");
-            this.listaTitoli.clearSelection();
-            this.ora.removeAllItems();
-        }else{    
-            this.jTextField3.setText(b.getScelta().getSala_p().getnLiberi()+"");
-        }
+        JOptionPane.showMessageDialog(null,c.restituisciFilm(s),"INFORMAZIONI SUL FILM",INFORMATION_MESSAGE);
+    }//GEN-LAST:event_infoFilmActionPerformed
         
-    }//GEN-LAST:event_oraMouseClicked
-
-    private void oraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oraActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_oraActionPerformed
-    
     /**
      * @param args the command line arguments
      */
@@ -353,28 +346,26 @@ public class Interfaccia extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane ListaTitoliFilm;
     private javax.swing.JLabel Titolo;
+    private javax.swing.JButton infoFilm;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    public javax.swing.JList<String> listaTitoli;
+    private javax.swing.JList<String> listaTitoli;
     private javax.swing.JLabel n_salaLabel;
-    public javax.swing.JComboBox<String> ora;
+    private javax.swing.JTextField numPostiLib;
+    private javax.swing.JTextField numSala;
+    private javax.swing.JComboBox<String> ora;
     private javax.swing.JLabel orariLabel;
-    public javax.swing.JComboBox<String> qtaCombo;
+    private javax.swing.JLabel postiLibLabel;
+    private javax.swing.JLabel prezzo;
+    private javax.swing.JTextField prezzoTot;
+    private javax.swing.JLabel qtaBigliettiLabel;
+    private javax.swing.JComboBox<String> qtaCombo;
     private javax.swing.JButton stampa;
     // End of variables declaration//GEN-END:variables
-    private String s,o;
+    private String s,o=null;
     private Catalogo c = new Catalogo();
-    public String getS() {
-        return s;
-    }
     Biglietto b=new Biglietto();
     private int n;
     private Posto p=new Posto(0,0);

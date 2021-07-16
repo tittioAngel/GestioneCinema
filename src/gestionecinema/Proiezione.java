@@ -54,10 +54,11 @@ public class Proiezione {
         this.sala_p = sala_p;
     }
     
+    
 
     @Override
     public String toString() {
-        return "Proiezione{" + "film_p=" + film_p + ", sala_p=" + sala_p + ", orario_p=" + orario_p + '}';
+        return film_p + "," + sala_p + "," + orario_p;
     }
     
     
