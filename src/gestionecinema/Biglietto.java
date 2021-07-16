@@ -27,11 +27,11 @@ public class Biglietto {
     public void stampaBiglietti(int nb) throws IOException{
         FileWriter f=new FileWriter("src\\gestionecinema\\biglietto.txt");
         File storico_biglietti=new File("src\\gestionecinema\\storico_biglietti.txt");
-        File posti_occupati=new File("src\\gestionecinema\\posti_occupati.txt");
         Writer output = null;
         output = new BufferedWriter(new FileWriter(storico_biglietti, true));
         int n=0;//tiene conto dei biglietti stampati
         if(scelta.getSala_p().getnLiberi()>=nb){
+            System.out.println(scelta.getSala_p().getnLiberi());
             for(int i=0;i<scelta.getSala_p().getNf();i++){ // scorriamo le file
                 if(scelta.getSala_p().liberiFila(i)>=nb){ //vediamo se nella fila ci sono abbastanza posti
                     for (int j=0;j<scelta.getSala_p().getGf();j++){ //scorriamo i sedili

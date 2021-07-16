@@ -84,6 +84,7 @@ public class Sala {
     public void occupaPosto(Posto posto){ 
         posti[posto.getFila()][posto.getSedile()].setOccupato(true);// il posto viene reso occupato
         nLiberi--; //aggiorniamo i posti occupati 
+        System.out.println("*"+nLiberi);
     }
          
     /**

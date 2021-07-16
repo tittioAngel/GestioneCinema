@@ -5,10 +5,12 @@
  */
 package gestionecinema;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import static java.lang.Character.UnicodeScript.values;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -21,7 +23,7 @@ public class Interfaccia extends javax.swing.JFrame {
     /**
      * Creates new form Interfaccia
      */
-    public Interfaccia() {
+    public Interfaccia() throws FileNotFoundException {
         
         initComponents();
         try {
@@ -29,6 +31,26 @@ public class Interfaccia extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        File in = new File("src\\gestionecinema\\storico_biglietti.txt");
+        Scanner input = new Scanner(in);
+        
+        while(input.hasNextLine()){
+            String letta = input.nextLine();
+            String[] riga = letta.split(",");
+            int numSala = Integer.parseInt(riga[0]);
+            String[] orario = riga[1].split(":");
+            int ora = Integer.parseInt(orario[0]);
+            int min = Integer.parseInt(orario[1]);
+            int fila = Integer.parseInt(riga[2]);
+            int sedile = Integer.parseInt(riga[3]);
+            
+            Orario orario_p = new Orario(ora,min);
+            Posto posto = new Posto(sedile,fila);
+            
+            c.proiezioneScelta(orario_p,numSala).getSala_p().occupaPosto(posto);
+        }
+        
         String []s=new String[c.listaTitoliFilm().size()];
         for (int j=0;j<c.listaTitoliFilm().size();j++){
             s[j]=(String) (c.listaTitoliFilm().get(j));
@@ -286,8 +308,7 @@ public class Interfaccia extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //this.jTextField3.setText(b.getScelta().getSala_p().getnLiberi()+"");
-
+        
         this.numSala.setText("");
         this.prezzoTot.setText("");
         this.numPostiLib.setText("");
@@ -339,7 +360,11 @@ public class Interfaccia extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Interfaccia().setVisible(true);
+                try {
+                    new Interfaccia().setVisible(true);
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -364,10 +389,10 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> qtaCombo;
     private javax.swing.JButton stampa;
     // End of variables declaration//GEN-END:variables
-    private String s,o=null;
+    private String s,o;
     private Catalogo c = new Catalogo();
-    Biglietto b=new Biglietto();
+    Biglietto b = new Biglietto();
     private int n;
-    private Posto p=new Posto(0,0);
+    private Posto p = new Posto(0,0);
     Orario orario;
 }
