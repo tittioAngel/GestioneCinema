@@ -18,18 +18,18 @@ import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.*;
 
 
-public class Interfaccia extends javax.swing.JFrame {
+public class GestioneCinema extends javax.swing.JFrame {
 
     /**
      * Creates new form Interfaccia
      */
-    public Interfaccia() throws FileNotFoundException {
+    public GestioneCinema() throws FileNotFoundException {
         
         initComponents();
         try {
             c.riempiCatalogo();
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestioneCinema.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         File in = new File("src\\gestionecinema\\storico_biglietti.txt");
@@ -306,7 +306,7 @@ public class Interfaccia extends javax.swing.JFrame {
             b.stampaBiglietti(n);
 
         } catch (IOException ex) {
-            Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestioneCinema.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         this.numSala.setText("");
@@ -347,23 +347,24 @@ public class Interfaccia extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Interfaccia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestioneCinema.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Interfaccia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestioneCinema.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Interfaccia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestioneCinema.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Interfaccia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GestioneCinema.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    new Interfaccia().setVisible(true);
+                    new GestioneCinema().setVisible(true);
                 } catch (FileNotFoundException ex) {
-                    Logger.getLogger(Interfaccia.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(GestioneCinema.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
@@ -376,17 +377,17 @@ public class Interfaccia extends javax.swing.JFrame {
     private javax.swing.JButton infoFilm;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JList<String> listaTitoli;
+    public javax.swing.JList<String> listaTitoli;
     private javax.swing.JLabel n_salaLabel;
     private javax.swing.JTextField numPostiLib;
-    private javax.swing.JTextField numSala;
-    private javax.swing.JComboBox<String> ora;
+    public javax.swing.JTextField numSala;
+    public javax.swing.JComboBox<String> ora;
     private javax.swing.JLabel orariLabel;
     private javax.swing.JLabel postiLibLabel;
     private javax.swing.JLabel prezzo;
     private javax.swing.JTextField prezzoTot;
     private javax.swing.JLabel qtaBigliettiLabel;
-    private javax.swing.JComboBox<String> qtaCombo;
+    public javax.swing.JComboBox<String> qtaCombo;
     private javax.swing.JButton stampa;
     // End of variables declaration//GEN-END:variables
     private String s,o;

@@ -2,29 +2,23 @@ Biglietto numero: 1
 Film: Cruella
 Orario: 15:30
 Sala: 1
-Posto: Fila = B    Sedile = 1
+Posto: Fila = A    Sedile = 1
 
 Biglietto numero: 2
 Film: Cruella
 Orario: 15:30
 Sala: 1
-Posto: Fila = B    Sedile = 2
+Posto: Fila = A    Sedile = 2
 
 Biglietto numero: 3
 Film: Cruella
 Orario: 15:30
 Sala: 1
-Posto: Fila = B    Sedile = 3
+Posto: Fila = A    Sedile = 3
 
 Biglietto numero: 4
 Film: Cruella
 Orario: 15:30
 Sala: 1
-Posto: Fila = B    Sedile = 4
-
-Biglietto numero: 5
-Film: Cruella
-Orario: 15:30
-Sala: 1
-Posto: Fila = B    Sedile = 5
+Posto: Fila = A    Sedile = 4
 
