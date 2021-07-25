@@ -7,10 +7,9 @@ import java.util.ArrayList;
 public class Sala {
     private int nf; // numero di file
     private int nposti; 
-    private int gf; //numero di sedili per fila
+    private final int sf = 10; //numero di sedili per fila
     private int numero;
     private Posto posti[][];
-    private int nLiberi=0;
 
     //costruttori
     /**
@@ -47,10 +46,8 @@ public class Sala {
                     nf=8;
      
             break;
-        } 
-        gf=nposti/nf; // vediamo quanti posti ci sono in una fila
-        nLiberi = nposti; 
-        posti=new Posto[nf][gf];
+        }
+        posti=new Posto[nf][sf];
         for(int j=0;j<nf;j++){
             for(int i=0;i<posti[j].length;i++){
                 posti[j][i]=new Posto(i,j);
@@ -60,21 +57,18 @@ public class Sala {
 
     //metodi
     
-    
-    /**
-     * aggiorniamo il numero di posti liberi nella sala
-     */ 
-    public void aggiornaPosti(){ 
-        nLiberi--;
-    }
-    
     /**
      * Ci dice se la sala è piena o meno
      * @return ci torna true se la sala è piena altrimenti torna falso
      */
-    public boolean pieno(){
-        if (nLiberi!=0) return false; //se la sala non è piena torna falso
-        else return true; // se la sala è piena torna true 
+    public boolean Pieno(){
+        for(int i=0; i< nf; i++){
+            for(int j=0; j<sf; j++){
+                if(posti[i][j].getOccupato() == false)
+                    return false;
+            }
+        }
+        return true; 
     }
     
     /**
@@ -83,8 +77,6 @@ public class Sala {
      */
     public void occupaPosto(Posto posto){ 
         posti[posto.getFila()][posto.getSedile()].setOccupato(true);// il posto viene reso occupato
-        nLiberi--; //aggiorniamo i posti occupati 
-        System.out.println("*"+nLiberi);
     }
          
     /**
@@ -94,7 +86,7 @@ public class Sala {
      */
     public int liberiFila(int f){
         int n=0; //n è il numero di posti liberi
-        for(int i=0;i<gf;i++){ //un for per i posti che sono in una fila
+        for(int i=0;i<sf;i++){ //un for per i posti che sono in una fila
             if(posti[f][i].getOccupato()==false) // se il posto selezionato è occupato aggiorniamo n 
                n++; 
         }
@@ -111,7 +103,7 @@ public class Sala {
     }
 
     public int getGf() {
-        return gf;
+        return sf;
     }
 
     public int getNumero() {
@@ -122,15 +114,34 @@ public class Sala {
         return posti;
     }
     
-   
-
-    public int getnLiberi() {
-        return nLiberi;
+    public int numPostiLiberi(){
+        int nLiberi = 0;
+        for(int i=0; i< nf; i++){
+            for(int j=0; j<sf; j++){
+                if(posti[i][j].getOccupato() == false)
+                    nLiberi++;
+            }
+        }
+        return nLiberi; 
+    }
+    
+    public int trovaFila(int numBiglietti){
+        int n=0;
+        for(int i=0; i< nf; i++){
+            for(int j=0; j<sf; j++){
+                if(posti[i][j].getOccupato() == false && n<numBiglietti)
+                    n++;
+                if(n==numBiglietti)
+                    return i;
+            }
+            n=0;
+        } 
+        return -1;
     }
 
     @Override
     public String toString() {
-        return "Sala{" + "nf=" + nf + ", nposti=" + nposti + ", gf=" + gf + ", numero=" + numero +", nLiberi=" + nLiberi + '}';
+        return "Sala{" + "nf=" + nf + ", nposti=" + nposti + ", gf=" + sf + ", numero=" + numero + '}';
     }
     
 

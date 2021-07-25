@@ -4,7 +4,6 @@ package gestionecinema;
 
 public class Posto {
     
-    
     private int sedile;
     private int fila;
     private boolean occupato;

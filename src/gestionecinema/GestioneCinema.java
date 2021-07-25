@@ -269,7 +269,7 @@ public class GestioneCinema extends javax.swing.JFrame {
         numSala.setText(c.visualizzaSalaFilm(s, orario)+"");
         b.setScelta(c.proiezioneScelta(s,orario,c.visualizzaSalaFilm(s, orario)));
         prezzoTot.setText(b.prezzo(n));
-        if(b.getScelta().getSala_p().getnLiberi()==0){
+        if(b.getScelta().getSala_p().Pieno()){
             JOptionPane.showMessageDialog(null, "La sala "+b.getScelta().getSala_p().getNumero()+" alle ore "+b.getScelta().getOrario_p().toString()+" è PIENA","ATTENZIONE!!",ERROR_MESSAGE);
             this.numSala.setText("");
             this.prezzoTot.setText("");
@@ -277,7 +277,7 @@ public class GestioneCinema extends javax.swing.JFrame {
             this.listaTitoli.clearSelection();
             this.ora.removeAllItems();
         }else{
-            this.numPostiLib.setText(b.getScelta().getSala_p().getnLiberi()+"");
+            this.numPostiLib.setText(b.getScelta().getSala_p().numPostiLiberi()+"");
         }
     }//GEN-LAST:event_oraMouseClicked
 

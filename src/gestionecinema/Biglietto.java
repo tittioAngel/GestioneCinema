@@ -5,18 +5,27 @@ package gestionecinema;
 
 import java.io.*;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
 
 
 public class Biglietto {
-    private Proiezione scelta=new Proiezione();
-    //costruttori
-    public Biglietto(Proiezione scelta) {
+    
+    private Proiezione scelta = new Proiezione();
+    private Posto posto_assegnato = new Posto();
+    
+    
+    public Biglietto(Proiezione scelta, Posto p) {
         this.scelta = scelta;
-        
+        this.posto_assegnato = p;    
     }
+    
     public Biglietto(){
     }
-    //metodi
+
+    public void setPosto_assegnato(Posto posto_assegnato) {
+        this.posto_assegnato = posto_assegnato;
+    }
+    
     
     /**
      * Stampa i biglietti richiesti in maniera appropriata rispetto alla quantità richiesta
@@ -29,30 +38,32 @@ public class Biglietto {
         File storico_biglietti=new File("src\\gestionecinema\\storico_biglietti.txt");
         Writer output = null;
         output = new BufferedWriter(new FileWriter(storico_biglietti, true));
-        int n=0;//tiene conto dei biglietti stampati
-        if(scelta.getSala_p().getnLiberi()>=nb){
-            System.out.println(scelta.getSala_p().getnLiberi());
-            for(int i=0;i<scelta.getSala_p().getNf();i++){ // scorriamo le file
-                if(scelta.getSala_p().liberiFila(i)>=nb){ //vediamo se nella fila ci sono abbastanza posti
-                    for (int j=0;j<scelta.getSala_p().getGf();j++){ //scorriamo i sedili
-                        if(scelta.getSala_p().getPosti()[i][j].getOccupato()==false && n<nb){//se il sedile è non occupato e non abbiamo ancora stampato tutti i biglietti
-                            f.write("Biglietto numero: "+(n+1)+"\n");
-                            f.write("Film: "+scelta.getFilm_p().getTitolo()+"\nOrario: "+scelta.getOrario_p().toString()+"\nSala: "+scelta.getSala_p().getNumero()+"\nPosto: "+scelta.getSala_p().getPosti()[i][j]);
-                            f.write("\n\n");
-                            output.write(scelta.getSala_p().getNumero()+","+scelta.getOrario_p()+","+scelta.getSala_p().getPosti()[i][j].getFila()+","+scelta.getSala_p().getPosti()[i][j].getSedile());
-                            output.write("\n");
-                            scelta.getSala_p().occupaPosto(scelta.getSala_p().getPosti()[i][j]); // rendiamo il posto occupato
-                            n++;// aggiorniamo i biglietti stampati
-                        }
+        
+        int fila = scelta.getSala_p().trovaFila(nb);
+        if(fila == -1){
+            JOptionPane.showMessageDialog(null, "La sala "+scelta.getSala_p().getNumero()+" alle ore "+scelta.getOrario_p().toString()+" non ha abbastanza POSTI LIBERI consecutivi","ATTENZIONE!!",ERROR_MESSAGE);
+        }
+        else{
+            boolean stampa= true;
+            int i=0;
+            while(stampa){
+                if(scelta.getSala_p().getPosti()[fila][i].getOccupato()==false){
+                    Posto p = new Posto(fila,i);
+                    posto_assegnato = p;
+                    for(int n=0;n<nb;n++){
+                        f.write("Biglietto numero: "+(n+1)+"\n");
+                        f.write(this.toString());
+                        i++;
                     }
+                    stampa=true; 
                 }
+                i++;
                 
             }
-            f.close();
-            output.close();
-        }else{
-            JOptionPane.showMessageDialog(null, "ATTENZIONE!!\nLa sala "+scelta.getSala_p().getNumero()+" alle ore "+scelta.getOrario_p().toString()+" non ha abbastanza POSTI LIBERI");
         }
+        f.close();
+        output.close();
+        
             
         
     }
@@ -75,7 +86,7 @@ public class Biglietto {
     
     @Override
     public String toString() {
-        return "Biglietto{" + "scelta=" + scelta;
+        return "Film: "+scelta.getFilm_p().getTitolo()+"\nOrario: "+scelta.getOrario_p().toString()+"\nSala: "+scelta.getSala_p().getNumero()+"\nPosto: "+ posto_assegnato;
     }
     
     
