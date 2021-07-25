@@ -34,7 +34,7 @@ public class GestioneCinema extends javax.swing.JFrame {
         
         File in = new File("src\\gestionecinema\\storico_biglietti.txt");
         Scanner input = new Scanner(in);
-        
+
         while(input.hasNextLine()){
             String letta = input.nextLine();
             String[] riga = letta.split(",");
@@ -44,12 +44,11 @@ public class GestioneCinema extends javax.swing.JFrame {
             int min = Integer.parseInt(orario[1]);
             int fila = Integer.parseInt(riga[2]);
             int sedile = Integer.parseInt(riga[3]);
-            
             Orario orario_p = new Orario(ora,min);
             Posto posto = new Posto(sedile,fila);
-            
             c.proiezioneScelta(orario_p,numSala).getSala_p().occupaPosto(posto);
         }
+
         
         String []s=new String[c.listaTitoliFilm().size()];
         for (int j=0;j<c.listaTitoliFilm().size();j++){

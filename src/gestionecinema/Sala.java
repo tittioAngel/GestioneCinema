@@ -72,7 +72,7 @@ public class Sala {
     }
     
     /**
-     * rende un determinato posto occupato e di conseguenza aggiorna i posti occupati
+     * rende un determinato posto occupato 
      * @param posto  Posto
      */
     public void occupaPosto(Posto posto){ 
@@ -106,6 +106,10 @@ public class Sala {
         return sf;
     }
 
+    public int getSf() {
+        return sf;
+    }
+
     public int getNumero() {
         return numero;
     }
@@ -130,11 +134,11 @@ public class Sala {
         for(int i=0; i< nf; i++){
             for(int j=0; j<sf; j++){
                 if(posti[i][j].getOccupato() == false && n<numBiglietti)
-                    n++;
-                if(n==numBiglietti)
-                    return i;
+                    n++;    
             }
-            n=0;
+            if(n==numBiglietti)
+                return i;
+            else n=0;
         } 
         return -1;
     }

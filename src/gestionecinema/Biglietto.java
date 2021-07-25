@@ -38,9 +38,10 @@ public class Biglietto {
         File storico_biglietti=new File("src\\gestionecinema\\storico_biglietti.txt");
         Writer output = null;
         output = new BufferedWriter(new FileWriter(storico_biglietti, true));
+        
+        
         int n=0;// tiene conto dei posti assegnati 
         int fila = scelta.getSala_p().trovaFila(nb);
-        Posto p=new Posto();
         
         if( scelta.getSala_p().trovaFila(nb) == -1){  // vediamo se ci sono abbastanza posti consecutivi
             JOptionPane.showMessageDialog(null, "La sala "+scelta.getSala_p().getNumero()+" alle ore "+scelta.getOrario_p().toString()+" non ha abbastanza POSTI LIBERI consecutivi","ATTENZIONE!!",ERROR_MESSAGE);
@@ -53,8 +54,11 @@ public class Biglietto {
                         f.write("\n\n");
                         n++;
                         scelta.getSala_p().getPosti()[fila][i].setOccupato(true);
-                        System.out.println(posto_assegnato);
-                        System.out.println(posto_assegnato.getOccupato());
+//                        System.out.println(posto_assegnato);
+//                        System.out.println(posto_assegnato.getOccupato());
+                        output.write(scelta.getSala_p().getNumero()+","+scelta.getOrario_p()+","+posto_assegnato.getFila()+","+posto_assegnato.getSedile());
+                        output.write("\n");
+ 
                     }
                     
             }
