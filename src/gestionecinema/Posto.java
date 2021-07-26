@@ -1,23 +1,34 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package gestionecinema;
 
+/**
+ * 
+ * @author matte
+ */
 
 public class Posto {
     
     private int sedile;
     private int fila;
     private boolean occupato;
-    //costruttori
+    
+    
     public Posto(int sedile,int fila){
         this.sedile=sedile;
         this.fila=fila;
         this.occupato=false;
     }
     public Posto(){
+        this.sedile = 0;
+        this.fila = 0;
         this.occupato=false;
     }
     
-    //metodi
+    
     public boolean getOccupato() {
         return occupato;
     }

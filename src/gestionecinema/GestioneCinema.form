@@ -76,10 +76,10 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="qtaCombo" min="-2" pref="57" max="-2" attributes="0"/>
                               <Component id="ora" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
-                              <Component id="prezzoTot" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
+                              <Component id="prezzoTot" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="numPostiLib" alignment="0" pref="36" max="32767" attributes="0"/>
-                                  <Component id="numSala" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="numSala" alignment="0" pref="36" max="32767" attributes="0"/>
+                                  <Component id="numPostiLib" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="51" pref="49" max="32767" attributes="0"/>

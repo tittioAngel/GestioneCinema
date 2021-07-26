@@ -5,30 +5,33 @@
  */
 package gestionecinema;
 
+/**
+ * 
+ * @author matte
+ */
 
 public class Proiezione {
     
-    //Attributi
     private Film film_p;
     private Sala sala_p;
     private Orario orario_p;
     
-    //Costruttori
+
     public Proiezione() {
     }
-/**
- * 
- * @param film_p Film
- * @param orario_p Orario 
- * @param sala_p Sala
- */    
+    
+    /**
+     * 
+     * @param film_p Film
+     * @param orario_p Orario 
+     * @param sala_p Sala
+     */    
     public Proiezione(Film film_p, Orario orario_p, Sala sala_p){
         this.film_p=film_p;
         this.orario_p=orario_p;
         this.sala_p=sala_p;
     }
     
-    //Metodi
     
     public Film getFilm_p() {
         return film_p;

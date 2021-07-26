@@ -14,8 +14,14 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.*;
+
+/**
+ * 
+ * @author matte
+ */
 
 
 public class GestioneCinema extends javax.swing.JFrame {
@@ -175,10 +181,10 @@ public class GestioneCinema extends javax.swing.JFrame {
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(qtaCombo, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 57, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(ora, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 75, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(prezzoTot, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 36, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(prezzoTot, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                                .add(org.jdesktop.layout.GroupLayout.LEADING, numPostiLib, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                                .add(org.jdesktop.layout.GroupLayout.LEADING, numSala)))
+                                .add(org.jdesktop.layout.GroupLayout.LEADING, numSala, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                                .add(org.jdesktop.layout.GroupLayout.LEADING, numPostiLib)))
                         .add(49, 49, Short.MAX_VALUE))
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -326,6 +332,7 @@ public class GestioneCinema extends javax.swing.JFrame {
     private void infoFilmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoFilmActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(null,c.restituisciFilm(s),"INFORMAZIONI SUL FILM",INFORMATION_MESSAGE);
+        
     }//GEN-LAST:event_infoFilmActionPerformed
         
     /**

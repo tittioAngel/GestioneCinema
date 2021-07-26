@@ -5,10 +5,13 @@
  */
 package gestionecinema;
 
+/**
+ * 
+ * @author matte
+ */
 
 public class Film {
     
-    //Attributi
     private String titolo;
     private String genere;
     private String regista;
@@ -18,9 +21,7 @@ public class Film {
     private String distribuzione;
     private String trama;
     
-    //Costruttori
     /**
-     * 
      * @param titolo String 
      * @param genere String
      * @param regista String
@@ -41,7 +42,6 @@ public class Film {
         this.trama = trama;
     }
     
-    //Metodi
     public String getTitolo(){
         return titolo;
     }

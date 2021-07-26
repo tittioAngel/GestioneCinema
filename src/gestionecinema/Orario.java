@@ -5,6 +5,10 @@
  */
 package gestionecinema;
 
+/**
+ * 
+ * @author matte
+ */
 
 public class Orario {
     

@@ -1,13 +1,19 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package gestionecinema;
 
-import java.util.ArrayList;
-
+/**
+ * 
+ * @author matte
+ */
 
 public class Sala {
-    private int nf; // numero di file
+    private int nf; 
     private int nposti; 
-    private final int sf = 10; //numero di sedili per fila
+    private final int sf = 10; 
     private int numero;
     private Posto posti[][];
 
@@ -50,15 +56,14 @@ public class Sala {
         posti=new Posto[nf][sf];
         for(int j=0;j<nf;j++){
             for(int i=0;i<posti[j].length;i++){
-                posti[j][i]=new Posto(i,j);
+                posti[j][i] = new Posto(i,j);
             } 
         }
     }
 
-    //metodi
     
     /**
-     * Ci dice se la sala è piena o meno
+     * Controlla se tutti i posti della sala sono occupati.
      * @return ci torna true se la sala è piena altrimenti torna falso
      */
     public boolean Pieno(){
@@ -78,7 +83,7 @@ public class Sala {
     public void occupaPosto(Posto posto){ 
         posti[posto.getFila()][posto.getSedile()].setOccupato(true);// il posto viene reso occupato
     }
-         
+
     /**
      * Ci conta il numero di posti liberi nella fila data 
      * @param f int, fila chiesta 
@@ -118,6 +123,10 @@ public class Sala {
         return posti;
     }
     
+    /**
+     * Conta il numero di posti liberi nela sala.
+     * @return numero di posti liberi nella sala
+     */
     public int numPostiLiberi(){
         int nLiberi = 0;
         for(int i=0; i< nf; i++){
@@ -128,7 +137,12 @@ public class Sala {
         }
         return nLiberi; 
     }
-    
+     
+    /**
+     * Cerca la prima fila con abbastaza posti liberi in base al numero di bigletti da acquistare.
+     * @param numBiglietti numero di biglietti da acquistare
+     * @return numero della fila
+     */
     public int trovaFila(int numBiglietti){
         int n=0;
         for(int i=0; i< nf; i++){

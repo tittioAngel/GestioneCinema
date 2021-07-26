@@ -1,12 +1,18 @@
-
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package gestionecinema;
-
 
 import java.io.*;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 
+/**
+ * 
+ * @author matte
+ */
 
 public class Biglietto {
     
@@ -21,24 +27,21 @@ public class Biglietto {
     
     public Biglietto(){
     }
-
-    public void setPosto_assegnato(Posto posto_assegnato) {
-        this.posto_assegnato = posto_assegnato;
-    }
-    
     
     /**
      * Stampa i biglietti richiesti in maniera appropriata rispetto alla quantità richiesta
-     * Verranno stampati in un documento di testo chiamato biglietto.txt
+     * I biglietti da consegnara al cliente verranno stampati in un documento di testo chiamato biglietto.txt
+     * Verranno anche aggiornati due file di testo, uno per tenere traccia dei posti occupati e uno per tenere traccia di tutti i biglietti venduti
      * @param nb numero di biglietti richiesti
      * @throws IOException 
      */
     public void stampaBiglietti(int nb) throws IOException{
         FileWriter f=new FileWriter("src\\gestionecinema\\biglietto.txt");
+        File storico_posti=new File("src\\gestionecinema\\storico_posti.txt");
         File storico_biglietti=new File("src\\gestionecinema\\storico_biglietti.txt");
-        Writer output = null;
-        output = new BufferedWriter(new FileWriter(storico_biglietti, true));
         
+        Writer posti_occupati = new BufferedWriter(new FileWriter(storico_posti, true));
+        Writer biglietti_venduti = new BufferedWriter(new FileWriter(storico_biglietti, true));
         
         int n=0;// tiene conto dei posti assegnati 
         int fila = scelta.getSala_p().trovaFila(nb);
@@ -50,27 +53,23 @@ public class Biglietto {
                     //p=scelta.getSala_p().getPosti()[fila][i];
                     if(!scelta.getSala_p().getPosti()[fila][i].getOccupato()){
                         posto_assegnato=scelta.getSala_p().getPosti()[fila][i];
-                        f.write("Biglietto n: "+(n+1)+"\n"+"Film: "+scelta.getFilm_p().getTitolo()+"  Sala: "+scelta.getSala_p().getNumero()+" Ora:"+scelta.getOrario_p()+"\n Posto: "+posto_assegnato.toString());
-                        f.write("\n\n");
+                        f.write("Biglietto n: "+(n+1)+"\n"+this.toString()+"\n\n");
                         n++;
                         scelta.getSala_p().getPosti()[fila][i].setOccupato(true);
-//                        System.out.println(posto_assegnato);
-//                        System.out.println(posto_assegnato.getOccupato());
-                        output.write(scelta.getSala_p().getNumero()+","+scelta.getOrario_p()+","+posto_assegnato.getFila()+","+posto_assegnato.getSedile());
-                        output.write("\n");
+                        posti_occupati.write(scelta.getSala_p().getNumero()+","+scelta.getOrario_p()+","+posto_assegnato.getFila()+","+posto_assegnato.getSedile()+"\n");
+                        biglietti_venduti.write(this.toString()+"\n\n");
  
                     }
                     
             }
         }
         f.close();
-        output.close();
-        
-            
-        
+        posti_occupati.close();
+        biglietti_venduti.close();  
     }
+    
     /**
-     * Restituisce il totale del prezzo da pagare
+     * Restituisce il totale del prezzo da pagare, semplicemente il numero dei biglietti acquistati moltipicato per 5€.
      * @param nb numero di biglietti chiesti
      * @return String
      */
@@ -78,6 +77,10 @@ public class Biglietto {
         return nb*5+" €";
     }
 
+    /**
+     * Seleziona la proiezione scelta all'acquisto del biglietto.
+     * @return proiezone scelta
+     */
     public Proiezione getScelta() {
         return scelta;
     }
@@ -85,6 +88,11 @@ public class Biglietto {
     public void setScelta(Proiezione scelta) {
         this.scelta = scelta;
     }
+    
+    public void setPosto_assegnato(Posto posto_assegnato) {
+        this.posto_assegnato = posto_assegnato;
+    }
+    
     
     @Override
     public String toString() {

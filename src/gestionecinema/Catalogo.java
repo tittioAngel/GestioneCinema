@@ -6,6 +6,10 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * 
+ * @author matte
+ */
 
 public class Catalogo {
     
@@ -20,7 +24,8 @@ public class Catalogo {
     
     //Metodi
     
-    /**Inserisce nel catalogo tutte le proiezioni contenute nel file proiezioni.txt
+    /**
+     * Inserisce nel catalogo tutte le proiezioni contenute nel file proiezioni.txt
      * Scansiona il file e per ogni proiezione aggiorna il film, la sala e l'orario.
      * @throws FileNotFoundException 
      */
@@ -55,8 +60,8 @@ public class Catalogo {
         }
     }
     
-    /**Inserisce in un ArrayList i titoli dei film senza ripetersi
-     * Andranno poi visualizzati
+    /**
+     * Inserisce in un ArrayList i titoli dei film senza ripetizioni.
      * @return lista dei titoli
      */
     public ArrayList listaTitoliFilm(){
@@ -69,12 +74,11 @@ public class Catalogo {
         return listaTitoli;
     }
     
-    /**Scelto il titolo di un film seleziona le sale in cui il film è visibile
-     * 
-     * @param titolo_Film Titolo del film scelto
-     * @return lista delle sale per quel determinato film
+    /**
+     * Scelto il titolo di un film restituisce il riferimento del film stesso.
+     * @param titolo_Film titolo del film scelto
+     * @return film di riferimento
      */
-    
     public Film restituisciFilm(String titolo){
         for(Proiezione p: catalogo_consultabile){
             if(p.getFilm_p().getTitolo().equals(titolo))
@@ -83,10 +87,10 @@ public class Catalogo {
         return null;
     }    
     /**
-     * Dati un titolo e un orario di un film il metodo ci restituisce il numero della sala dove avverrà la proiezione 
+     * Dati un titolo e un orario di un film il metodo ci restituisce il numero della sala dove si terrà la corrispondente proiezione.
      * @param titolo_Film String
      * @param orario_Film String 
-     * @return int
+     * @return numero sala della proiezione
      */
     public int visualizzaSalaFilm(String titolo_Film, Orario orario_Film){
         int salaFilm = 0;
@@ -100,9 +104,9 @@ public class Catalogo {
     }
     
     /**
-     * Dato il titolo di un film ci restituisce la lista degli orari relarivi al film
+     * Dato il titolo di un film ci restituisce la lista degli orari relativi alle proiezioni del film.
      * @param titolo_Film Stirng 
-     * @return ArrayList<Orario>
+     * @return lista degli orari del film scelto
      */
     public ArrayList visualizzaOrariFilm(String titolo_Film){
         ArrayList<Orario> orariFilm = new ArrayList<Orario>();
@@ -115,7 +119,7 @@ public class Catalogo {
     }
     
     /**
-     * Ci restituisce la proiezione del catalogo relativa ai titolo, ora e numero della sala 
+     * Ci restituisce la proiezione del catalogo relativa ai titolo, orario e numero della sala. 
      * @param titolo String
      * @param ora Orario
      * @param s int , numero della sala 
@@ -129,6 +133,12 @@ public class Catalogo {
         return null;
     }
     
+    /**
+     * Ci restituisce la proiezione del catalogo relativa all'orario e numero della sala.
+     * @param ora
+     * @param s
+     * @return 
+     */
     public Proiezione proiezioneScelta(Orario ora,int s){
         for(int i=0;i<catalogo_consultabile.size();i++){
             if(catalogo_consultabile.get(i).getOrario_p().getOra()==ora.getOra()&& catalogo_consultabile.get(i).getOrario_p().getMinuto()==ora.getMinuto()&& catalogo_consultabile.get(i).getSala_p().getNumero()==s)
