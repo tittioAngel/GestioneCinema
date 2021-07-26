@@ -1,0 +1,15 @@
+Film: Tutti Per Uma
+Orario: 20:20
+Sala: 4
+Posto: Fila = A    Sedile = 1
+
+Film: Tutti Per Uma
+Orario: 20:20
+Sala: 4
+Posto: Fila = A    Sedile = 2
+
+Film: Tutti Per Uma
+Orario: 20:20
+Sala: 4
+Posto: Fila = A    Sedile = 3
+

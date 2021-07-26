@@ -38,7 +38,7 @@ public class GestioneCinema extends javax.swing.JFrame {
             Logger.getLogger(GestioneCinema.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        File in = new File("src\\gestionecinema\\storico_biglietti.txt");
+        File in = new File("src\\gestionecinema\\storico_posti.txt");
         Scanner input = new Scanner(in);
 
         while(input.hasNextLine()){
