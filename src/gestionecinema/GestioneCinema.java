@@ -266,7 +266,6 @@ public class GestioneCinema extends javax.swing.JFrame {
         // TODO add your handling code here:
         numSala.setVisible(true);
         o = ora.getSelectedItem().toString();
-        System.out.println(o);
         String[] parti = o.split(":");
         int ora1= Integer.parseInt(parti[0]);
         int minuto= Integer.parseInt(parti[1]);
