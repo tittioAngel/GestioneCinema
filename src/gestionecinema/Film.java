@@ -6,7 +6,7 @@
 package gestionecinema;
 
 /**
- * 
+ * Identifica il singolo film disponibile al cinema
  * @author matte
  */
 

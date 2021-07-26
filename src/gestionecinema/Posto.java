@@ -6,7 +6,7 @@
 package gestionecinema;
 
 /**
- * 
+ * Identifica il posto a sedere all'interno di una sala.
  * @author matte
  */
 

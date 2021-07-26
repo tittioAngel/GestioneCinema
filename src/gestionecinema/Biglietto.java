@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 
 /**
- * 
+ * Ientifica la scelta tra le proiezioni e ne assegna un posto.
  * @author matte
  */
 
@@ -19,10 +19,11 @@ public class Biglietto {
     private Proiezione scelta = new Proiezione();
     private Posto posto_assegnato = new Posto();
     
-    
-    public Biglietto(Proiezione scelta, Posto p) {
+
+    public Biglietto(Proiezione scelta) {
         this.scelta = scelta;
-        this.posto_assegnato = p;    
+        Posto p=new Posto(0,0);
+        this.posto_assegnato=p;    
     }
     
     public Biglietto(){
@@ -30,7 +31,7 @@ public class Biglietto {
     
     /**
      * Stampa i biglietti richiesti in maniera appropriata rispetto alla quantità richiesta
-     * I biglietti da consegnara al cliente verranno stampati in un documento di testo chiamato biglietto.txt
+     * I biglietti da consegnare al cliente verranno stampati in un documento di testo chiamato biglietto.txt
      * Verranno anche aggiornati due file di testo, uno per tenere traccia dei posti occupati e uno per tenere traccia di tutti i biglietti venduti
      * @param nb numero di biglietti richiesti
      * @throws IOException 
@@ -71,16 +72,13 @@ public class Biglietto {
     /**
      * Restituisce il totale del prezzo da pagare, semplicemente il numero dei biglietti acquistati moltipicato per 5€.
      * @param nb numero di biglietti chiesti
-     * @return String
+     * @return Totale da pagare
      */
     public String prezzo(int nb){
         return nb*5+" €";
     }
 
-    /**
-     * Seleziona la proiezione scelta all'acquisto del biglietto.
-     * @return proiezone scelta
-     */
+
     public Proiezione getScelta() {
         return scelta;
     }

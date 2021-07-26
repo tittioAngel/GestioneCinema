@@ -13,3 +13,143 @@ Orario: 20:20
 Sala: 4
 Posto: Fila = A    Sedile = 3
 
+Film: Cruella
+Orario: 17:40
+Sala: 4
+Posto: Fila = A    Sedile = 1
+
+Film: Cruella
+Orario: 17:40
+Sala: 4
+Posto: Fila = A    Sedile = 2
+
+Film: Cruella
+Orario: 22:10
+Sala: 2
+Posto: Fila = A    Sedile = 1
+
+Film: Cruella
+Orario: 22:10
+Sala: 2
+Posto: Fila = A    Sedile = 2
+
+Film: Il Cattivo Poeta
+Orario: 21:50
+Sala: 3
+Posto: Fila = A    Sedile = 1
+
+Film: Il Cattivo Poeta
+Orario: 21:50
+Sala: 3
+Posto: Fila = A    Sedile = 2
+
+Film: Maledetta Primavera
+Orario: 17:50
+Sala: 3
+Posto: Fila = A    Sedile = 1
+
+Film: Maledetta Primavera
+Orario: 17:50
+Sala: 3
+Posto: Fila = A    Sedile = 2
+
+Film: Maledetta Primavera
+Orario: 22:30
+Sala: 1
+Posto: Fila = A    Sedile = 1
+
+Film: Maledetta Primavera
+Orario: 22:30
+Sala: 1
+Posto: Fila = A    Sedile = 2
+
+Film: Maledetta Primavera
+Orario: 22:30
+Sala: 1
+Posto: Fila = A    Sedile = 3
+
+Film: Maledetta Primavera
+Orario: 22:30
+Sala: 1
+Posto: Fila = A    Sedile = 4
+
+Film: 100% Wolf
+Orario: 18:00
+Sala: 2
+Posto: Fila = A    Sedile = 1
+
+Film: 100% Wolf
+Orario: 18:00
+Sala: 2
+Posto: Fila = A    Sedile = 2
+
+Film: 100% Wolf
+Orario: 18:00
+Sala: 2
+Posto: Fila = A    Sedile = 3
+
+Film: 100% Wolf
+Orario: 18:00
+Sala: 2
+Posto: Fila = A    Sedile = 4
+
+Film: 100% Wolf
+Orario: 18:00
+Sala: 2
+Posto: Fila = B    Sedile = 1
+
+Film: 100% Wolf
+Orario: 18:00
+Sala: 2
+Posto: Fila = B    Sedile = 2
+
+Film: 100% Wolf
+Orario: 18:00
+Sala: 2
+Posto: Fila = B    Sedile = 3
+
+Film: 100% Wolf
+Orario: 18:00
+Sala: 2
+Posto: Fila = B    Sedile = 4
+
+Film: 100% Wolf
+Orario: 18:00
+Sala: 2
+Posto: Fila = B    Sedile = 5
+
+Film: 100% Wolf
+Orario: 18:00
+Sala: 2
+Posto: Fila = B    Sedile = 6
+
+Film: 100% Wolf
+Orario: 18:00
+Sala: 2
+Posto: Fila = B    Sedile = 7
+
+Film: 100% Wolf
+Orario: 18:00
+Sala: 2
+Posto: Fila = B    Sedile = 8
+
+Film: 100% Wolf
+Orario: 18:00
+Sala: 2
+Posto: Fila = B    Sedile = 9
+
+Film: 100% Wolf
+Orario: 18:00
+Sala: 2
+Posto: Fila = B    Sedile = 10
+
+Film: 100% Wolf
+Orario: 18:00
+Sala: 2
+Posto: Fila = A    Sedile = 5
+
+Film: 100% Wolf
+Orario: 18:00
+Sala: 2
+Posto: Fila = A    Sedile = 6
+

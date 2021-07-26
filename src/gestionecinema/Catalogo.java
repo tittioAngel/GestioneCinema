@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * 
+ * Identifica l'insieme di tutte le proiezioni disponibili nel cinema.
  * @author matte
  */
 
@@ -119,11 +119,11 @@ public class Catalogo {
     }
     
     /**
-     * Ci restituisce la proiezione del catalogo relativa ai titolo, orario e numero della sala. 
+     * Ci restituisce la proiezione del catalogo relativa al titolo, orario e numero della sala. 
      * @param titolo String
      * @param ora Orario
      * @param s int , numero della sala 
-     * @return 
+     * @return Proiezione selezionata
      */
     public Proiezione proiezioneScelta(String titolo,Orario ora,int s){
         for(int i=0;i<catalogo_consultabile.size();i++){
@@ -150,11 +150,5 @@ public class Catalogo {
     public ArrayList<Proiezione> getCatalogo_consultabile() {
         return catalogo_consultabile;
     }
-    
-    public void VisualizzaCatalogo(){
-        for(Proiezione p: catalogo_consultabile){
-            System.out.println(p);
-        }
-    }
-    
+  
 }

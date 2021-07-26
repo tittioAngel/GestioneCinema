@@ -6,7 +6,7 @@
 package gestionecinema;
 
 /**
- * 
+ * Identifica la singola sala fisica all'interno del cinema
  * @author matte
  */
 

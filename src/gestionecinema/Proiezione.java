@@ -6,7 +6,7 @@
 package gestionecinema;
 
 /**
- * 
+ * Identifica per ogni film la sala in cui viene proiettato e il corrispondente orario
  * @author matte
  */
 

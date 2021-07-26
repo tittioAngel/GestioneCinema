@@ -6,7 +6,7 @@
 package gestionecinema;
 
 /**
- * 
+ * Identifica l'orario in c'è una proiezione 
  * @author matte
  */
 

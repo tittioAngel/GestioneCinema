@@ -105,7 +105,7 @@ public class GestioneCinema extends javax.swing.JFrame {
         Titolo.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         Titolo.setText("CINEMA");
 
-        qtaCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+        qtaCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }));
         qtaCombo.setSelectedItem(qtaCombo);
         qtaCombo.setToolTipText("");
         qtaCombo.setEnabled(false);
@@ -398,8 +398,8 @@ public class GestioneCinema extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private String s,o;
     private Catalogo c = new Catalogo();
-    Biglietto b = new Biglietto();
+    private Biglietto b = new Biglietto();
     private int n;
     private Posto p = new Posto(0,0);
-    Orario orario;
+    private Orario orario;
 }
