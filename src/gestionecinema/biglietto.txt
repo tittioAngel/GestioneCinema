@@ -1,12 +1,18 @@
 Biglietto n: 1
-Film: 100% Wolf
-Orario: 18:00
-Sala: 2
-Posto: Fila = A    Sedile = 5
+Film: Cruella
+Orario: 15:30
+Sala: 1
+Posto: Fila = D    Sedile = 8
 
 Biglietto n: 2
-Film: 100% Wolf
-Orario: 18:00
-Sala: 2
-Posto: Fila = A    Sedile = 6
+Film: Cruella
+Orario: 15:30
+Sala: 1
+Posto: Fila = D    Sedile = 9
+
+Biglietto n: 3
+Film: Cruella
+Orario: 15:30
+Sala: 1
+Posto: Fila = D    Sedile = 10
 

@@ -280,6 +280,7 @@ public class GestioneCinema extends javax.swing.JFrame {
             this.numPostiLib.setText("");
             this.listaTitoli.clearSelection();
             this.ora.removeAllItems();
+            this.stampa.setEnabled(false);
         }else{
             this.numPostiLib.setText(b.getScelta().getSala_p().numPostiLiberi()+"");
         }
